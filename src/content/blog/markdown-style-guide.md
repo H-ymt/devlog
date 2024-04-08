@@ -33,8 +33,36 @@ Itatur? Quiatae cullecum rem ent aut odis in re eossequodi nonsequ idebis ne sap
 
 #### Syntax
 
-```markdown
-![Alt text](./full/or/relative/path/of/image)
+```tsx
+import * as React from 'react'
+
+export default function ThemeChanger() {
+  const [theme, setTheme] = React.useState(() => {
+    const storedTheme = localStorage.getItem('theme')
+    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? 'dark'
+      : 'light'
+    return storedTheme || systemTheme
+  })
+
+  React.useEffect(() => {
+    localStorage.setItem('theme', theme)
+    document.body.classList.remove('light', 'dark')
+    document.body.classList.add(theme)
+  }, [theme])
+
+  const toggleTheme = () => {
+    const newTheme = theme === 'dark' ? 'light' : 'dark'
+    setTheme(newTheme)
+  }
+
+  return (
+    <button type="button" onClick={toggleTheme}>
+      ThemeChanger
+    </button>
+  )
+}
+
 ```
 
 #### Output

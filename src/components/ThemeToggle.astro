@@ -1,0 +1,60 @@
+
+<div class="toggle-container">
+  <label class="toggle-switch">
+    <input type="checkbox" class="js-themeToggle">
+    <span class="slider"></span>
+  </label>
+  <span class="sr-only">テーマを変更する</span>
+</div>
+
+<style lang="scss">
+/* トグルスイッチの基本スタイル */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 22px;
+}
+
+/* 実際のチェックボックスは非表示 */
+.toggle-switch input {
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+
+/* スライダー */
+.slider {
+  position: absolute;
+  inset: 0;
+  cursor: pointer;
+  background-color: #ccc;
+  border-radius: 34px;
+  transition: 0.4s;
+}
+
+.slider::before {
+  position: absolute;
+  bottom: 2px;
+  left: 1px;
+  width: 18px;
+  height: 18px;
+  content: "";
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+
+/* チェックボックスがチェックされた時の状態 */
+.toggle-switch input.is-dark + .slider {
+  background-color: #2196F3;
+}
+
+.toggle-switch input.is-dark + .slider::before {
+  transform: translateX(20px);
+}
+</style>
+
+<script>
+  import "@/js/themeChanger.js"
+</script>

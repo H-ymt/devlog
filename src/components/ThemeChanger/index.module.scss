@@ -1,0 +1,21 @@
+.toggleSwichTrack {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 26px;
+  height: 26px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.2s ease-in-out;
+}
+
+.toggleSwichThumb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 34px;
+  height: 34px;
+  background-color: #333;
+  border-radius: 50%;
+  transition: transform 0.2s ease-in-out;
+}

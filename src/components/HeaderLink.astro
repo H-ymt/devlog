@@ -1,25 +1,39 @@
 ---
-import type { HTMLAttributes } from 'astro/types';
+import type { HTMLAttributes } from 'astro/types'
 
-type Props = HTMLAttributes<'a'>;
+type Props = HTMLAttributes<'a'>
 
-const { href, class: className, ...props } = Astro.props;
+const { href, class: className, ...props } = Astro.props
 
-const { pathname } = Astro.url;
-const subpath = pathname.match(/[^\/]+/g);
-const isActive = href === pathname || href === '/' + subpath?.[0];
+const { pathname } = Astro.url
+const subpath = pathname.match(/[^\/]+/g)
+const isActive = href === pathname || href === `/${subpath?.[0]}`
+const currentPath = href === pathname || null
 ---
 
-<a href={href} class:list={[className, { active: isActive }]} {...props}>
-	<slot />
+<a href={href} aria-current={currentPath ? "page" : null} class:list={['link', className, { active: isActive }]} {...props}>
+  <slot />
 </a>
-<style>
-	a {
-		display: inline-block;
-		text-decoration: none;
-	}
-	a.active {
-		font-weight: bolder;
-		text-decoration: underline;
-	}
+
+<style lang="scss">
+  .link {
+    display: inline-block;
+    padding: 0 12px;
+    font-family: var(--font-inter);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: var(--header-height);
+    color: var(--c-text-1);
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    @include hover {
+      color: var(--c-primary-light);
+      transition: color 0.2s ease;
+    }
+  }
+
+  .active {
+    color: var(--c-primary-light);
+  }
 </style>

@@ -7,12 +7,37 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "format": "prettier --write 'src/**/*.{ts,js,astro,scss}'",
+    "stylelint": "stylelint --fix 'src/**/*.{css,scss,astro}'",
+    "eslint": "eslint --fix 'src/**/*.{ts,js,astro}'"
   },
   "dependencies": {
     "@astrojs/mdx": "^2.2.2",
+    "@astrojs/react": "^3.1.1",
     "@astrojs/rss": "^4.0.5",
     "@astrojs/sitemap": "^3.1.2",
-    "astro": "^4.5.12"
+    "@types/react": "^18.2.74",
+    "@types/react-dom": "^18.2.23",
+    "astro": "^4.5.12",
+    "astro-google-fonts-optimizer": "^0.2.2",
+    "modern-css-reset": "^1.4.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sass": "^1.72.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^7.5.0",
+    "@typescript-eslint/parser": "^7.4.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-astro": "^0.33.1",
+    "postcss-html": "^1.6.0",
+    "prettier": "^3.2.5",
+    "prettier-plugin-astro": "^0.13.0",
+    "stylelint": "^16.3.1",
+    "stylelint-config-recess-order": "^5.0.0",
+    "stylelint-config-standard-scss": "^13.0.0",
+    "stylelint-prettier": "^5.0.0",
+    "typescript": "^5.4.3"
   }
 }

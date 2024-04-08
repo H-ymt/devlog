@@ -1,0 +1,124 @@
+:root {
+// layout
+--container-width: 1040px;
+--header-height: 64px;
+
+// border radius
+  --rounded-sm: 4px;
+  --rounded: 8px;
+  --rounded-md: 10px;
+  --rounded-lg: 12px;
+  --rounded-full: 99rem;
+
+  // font
+  --font-inter:"Inter", sans-serif;
+  --font-notosans: 'Noto Sans JP Variable', sans-serif;
+
+  // color
+  --c-background: #fff;
+  --c-background-soft: #f7f9f9;
+  --c-text-1: #0f1419;
+  --c-text-2: #536471;
+  --c-primary:#DB294D;
+  --c-primary-light:#ed4660;
+  --c-primary-lighter:#F67687;
+  --c-primary-lightest:#FAA7B1;
+  --c-primary-dark:#1E40AF;
+  --c-primary-darker:#1E3A8A;
+  --c-border: #cfd9de;
+  --c-border-light: #eff3f4;
+}
+
+
+.dark {
+  // color
+  --c-background:#1b1b1f;
+  --c-card-background-soft: #202127;
+    --c-text-1: rgb(255 255 245 / 86%);
+    --c-text-2: rgb(235 235 245 / 60%);
+    --c-primary:#e73f58;
+    --c-primary-light:#e84f63;
+    --c-primary-lighter:#ef6878;
+    --c-primary-lightest:#fccfd3;
+    --c-primary-dark:#1E40AF;
+    --c-primary-darker:#1E3A8A;
+    --c-border: #2e2e32;
+    --c-border-light: #3a3a3e;
+  }
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 100%;
+  min-height: 100vh;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--c-text-1);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  background: var(--c-background);
+  scrollbar-color: rgb(185 202 211) rgb(247 249 249);
+}
+
+a {
+  font-weight: 500;
+  color: var(--c-primary-light);
+  text-underline-offset: 2px;
+  transition: color 0.25s, opacity 0.25s;
+
+  @include hover {
+    color: var(--c-primary-lighter);
+    opacity: 1;
+  }
+}
+
+li {
+  list-style-type: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+
+
+button {
+  cursor: pointer;
+}
+
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.3s;
+}
+
+
+
+.sr-only {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+
+  /* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
+  clip: rect(1px 1px 1px 1px);
+
+  /* maybe deprecated but we need to support legacy browsers */
+  clip: rect(1px, 1px, 1px, 1px);
+
+  /* modern browsers, clip-path works inwards from each corner */
+  clip-path: inset(50%);
+
+  /* added line to stop words getting smushed together (as they go onto seperate lines and some screen readers do not understand line feeds as a space */
+  white-space: nowrap;
+  border: 0;
+}
