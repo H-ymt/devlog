@@ -3,9 +3,7 @@ import { GoogleFontsOptimizer } from 'astro-google-fonts-optimizer'
 import 'modern-css-reset'
 import '@/styles/global.scss'
 import { ViewTransitions } from 'astro:transitions'
-
-export const SITE_TITLE = 'Develop Log'
-export const SITE_DESCRIPTION = 'Web制作の知見を溜めるテックブログ'
+import { SITE_TITLE } from '@/consts'
 
 interface Props {
   title: string
