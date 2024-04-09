@@ -5,9 +5,6 @@
     "baseUrl": "/Users/hymt/Develop/astro/devlog",
     "paths": {
       "@/*": ["src/*"],
-      "@/layouts/*": ["src/layouts/*"],
-      "@/components/*": ["src/components/*"],
-      "@/styles/*": ["src/styles/*"],
       "@/js/*": ["src/assets/js/*"]
     },
     "jsx": "react-jsx",
