@@ -1,0 +1,103 @@
+---
+import ThemeToggle from "./ThemeToggle.astro";
+---
+
+<div class="wrapper">
+  <button type="button" class="button js-dialogToggle">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="6" cy="12" r="1" stroke="var(--c-text-1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></circle><circle cx="12" cy="12" r="1" stroke="var(--c-text-1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></circle><circle cx="18" cy="12" r="1" stroke="var(--c-text-1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></circle></svg>
+    <span class="sr-only">extra navigation</span>
+  </button>
+  
+  <dialog class="dialog js-dialog">
+    <div class="theme-toggle">
+      <p>Appearance</p>
+      <ThemeToggle />
+    </div>
+    <div class="social-links">
+      <a href="https://github.com/H-ymt/devlog" target="_blank" class="github-link">
+        <svg viewBox="0 0 16 16" aria-hidden="true" width="20" height="20"
+        ><path
+        fill="var(--c-text-2)"
+        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+        ></path></svg
+        >
+        <span class="sr-only">GitHub repo</span>
+      </a>
+
+      <a href="" target="_blank" class="zenn-link">
+        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path  fill="var(--c-text-2)" d="M.264 23.771h4.984a.8.8 0 0 0 .645-.352L19.614.874c.176-.293-.029-.645-.381-.645h-4.72a.63.63 0 0 0-.557.323L.03 23.361c-.088.176.029.41.234.41m17.181-.352l6.479-10.408a.477.477 0 0 0-.41-.733h-4.691a.52.52 0 0 0-.44.235l-6.655 10.643c-.176.264.029.616.352.616h4.779a.65.65 0 0 0 .586-.353"/></svg>
+        <span class="sr-only">Zenn</span>
+      </a>
+    </div>
+  </dialog>
+</div>
+<div class="overlay js-dialogOverlay"></div>
+
+<style lang="scss">
+.wrapper {
+  position: relative;
+}
+
+  .button {
+    display: grid;
+    place-items: center;
+    height: var(--header-height);
+    padding-inline: 14px;
+    background: transparent;
+    border: none;
+  }
+
+  .dialog {
+position: absolute;
+top: calc(var(--header-height) - 10px);
+left: -128px;
+z-index: 1;
+min-width: 180px;
+background: var(--c-background);
+border: 1px solid var(--c-border);
+border-radius: var(--rounded-lg);
+box-shadow: var(--c-shadow);
+  }
+
+  .theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 24px;
+    border-bottom: 1px solid var(--c-border);
+  }
+
+  .theme-toggle p {
+    margin: 0;
+  font-size: 12px;
+    color: var(--c-text-2);
+  }
+
+  .social-links {
+    display: flex;
+    align-items: center;
+    padding: 6px 14px;
+  }
+
+  .social-links a {
+    display: flex;
+    align-items: center;
+   width: 36px;
+    height: 36px;
+    padding-inline: 4px;
+  }
+
+  .overlay.open {
+position: fixed;
+inset: 0;
+z-index: 0;
+    width: 100%;
+    height: 100svh;
+background: transparent;
+  }
+
+</style>
+
+<script>
+  import "@/js/navDialogHandlers.js"
+</script>

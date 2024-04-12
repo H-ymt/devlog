@@ -11,7 +11,6 @@ Here is a sample of some basic Markdown syntax that can be used when writing Mar
 
 The following HTML `<h1>`—`<h6>` elements represent six levels of section headings. `<h1>` is the highest section level while `<h6>` is the lowest.
 
-# H1
 
 ## H2
 
@@ -33,35 +32,23 @@ Itatur? Quiatae cullecum rem ent aut odis in re eossequodi nonsequ idebis ne sap
 
 #### Syntax
 
-```tsx
-import * as React from 'react'
+```astro
+---
+import type { HTMLAttributes } from 'astro/types'
 
-export default function ThemeChanger() {
-  const [theme, setTheme] = React.useState(() => {
-    const storedTheme = localStorage.getItem('theme')
-    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
-      ? 'dark'
-      : 'light'
-    return storedTheme || systemTheme
-  })
+type Props = HTMLAttributes<'a'>
 
-  React.useEffect(() => {
-    localStorage.setItem('theme', theme)
-    document.body.classList.remove('light', 'dark')
-    document.body.classList.add(theme)
-  }, [theme])
+const { href, class: className, ...props } = Astro.props
 
-  const toggleTheme = () => {
-    const newTheme = theme === 'dark' ? 'light' : 'dark'
-    setTheme(newTheme)
-  }
+const { pathname } = Astro.url
+const subpath = pathname.match(/[^\/]+/g)
+const isActive = href === pathname || href === `/${subpath?.[0]}`
+const currentPath = href === pathname || null
+---
 
-  return (
-    <button type="button" onClick={toggleTheme}>
-      ThemeChanger
-    </button>
-  )
-}
+<a href={href} aria-current={currentPath ? "page" : null} class:list={['link', className, { active: isActive }]} {...props}>
+  <slot />
+</a>
 
 ```
 

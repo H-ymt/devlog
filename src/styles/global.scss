@@ -1,7 +1,7 @@
 :root {
 // layout
 --container-width: 1040px;
---header-height: 64px;
+--header-height: 60px;
 
 // border radius
   --rounded-sm: 4px;
@@ -11,35 +11,38 @@
   --rounded-full: 99rem;
 
   // font
-  --font-inter:"Inter", sans-serif;
+  --font-mplus: "M PLUS Rounded 1c", sans-serif;
   --font-notosans: 'Noto Sans JP Variable', sans-serif;
 
   // color
   --c-background: #fff;
-  --c-background-soft: #f7f9f9;
+  --c-background-soft: #f4f4f4;
+  --c-background-header: 255 255 255;
   --c-text-1: #0f1419;
-  --c-text-2: #536471;
-  --c-primary:#DB294D;
-  --c-primary-light:#ed4660;
-  --c-primary-lighter:#F67687;
-  --c-primary-lightest:#FAA7B1;
+  --c-text-2: #7e8184;
+  --c-primary:#1D9BF0;
+  --c-primary-light:#2898e3;
+  --c-primary-lighter:#3ca2e6;
+  --c-primary-lightest:#7eb5da;
   --c-primary-dark:#1E40AF;
   --c-primary-darker:#1E3A8A;
-  --c-border: #cfd9de;
+  --c-border: #d6e3ed;
   --c-border-light: #eff3f4;
+  --c-shadow: 0 12px 32px rgb(0 0 0 / 10%), 0 2px 6px rgb(0 0 0 / 8%);
 }
 
 
 .dark {
   // color
   --c-background:#1b1b1f;
-  --c-card-background-soft: #202127;
-    --c-text-1: rgb(255 255 245 / 86%);
-    --c-text-2: rgb(235 235 245 / 60%);
-    --c-primary:#e73f58;
-    --c-primary-light:#e84f63;
-    --c-primary-lighter:#ef6878;
-    --c-primary-lightest:#fccfd3;
+  --c-background-soft: #27282f;
+  --c-background-header: 27, 27, 31;
+    --c-text-1: #E7E9EA;
+    --c-text-2: #ebebf599;
+    --c-primary:#1D9BF0;
+    --c-primary-light:#2898e3;
+    --c-primary-lighter:#3ca2e6;
+    --c-primary-lightest:#7eb5da;
     --c-primary-dark:#1E40AF;
     --c-primary-darker:#1E3A8A;
     --c-border: #2e2e32;
@@ -56,7 +59,7 @@ body {
   grid-template-rows: auto 1fr auto;
   grid-template-columns: 100%;
   min-height: 100vh;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: var(--font-notosans);
   font-size: 16px;
   font-weight: 400;
   color: var(--c-text-1);
@@ -66,14 +69,19 @@ body {
   scrollbar-color: rgb(185 202 211) rgb(247 249 249);
 }
 
+main {
+  padding-top: 60px;
+}
+
 a {
-  font-weight: 500;
-  color: var(--c-primary-light);
-  text-underline-offset: 2px;
+  color: var(--c-primary);
+  text-decoration: none;
   transition: color 0.25s, opacity 0.25s;
 
   @include hover {
-    color: var(--c-primary-lighter);
+    color: var(--c-primary-light);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
     opacity: 1;
   }
 }

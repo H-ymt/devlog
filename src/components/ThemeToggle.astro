@@ -1,60 +1,64 @@
-
 <div class="toggle-container">
-  <label class="toggle-switch">
-    <input type="checkbox" class="js-themeToggle">
-    <span class="slider"></span>
+  <span id="theme-toggle-label" class="sr-only">テーマを変更する</span>
+  <label class="toggle-switch" aria-labelledby="theme-toggle-label">
+    <input type="checkbox" class="js-themeToggle" tabindex="0" aria-checked="false" role="switch" aria-labelledby="theme-toggle-label" />
+    <span class="slider" aria-hidden="true"></span>
   </label>
-  <span class="sr-only">テーマを変更する</span>
 </div>
 
 <style lang="scss">
-/* トグルスイッチの基本スタイル */
-.toggle-switch {
-  position: relative;
-  display: inline-block;
-  width: 40px;
-  height: 22px;
-}
+  .toggle-container {
+    display: flex;
+    align-items: center;
+  }
 
-/* 実際のチェックボックスは非表示 */
-.toggle-switch input {
-  width: 0;
-  height: 0;
-  opacity: 0;
-}
+  /* トグルスイッチの基本スタイル */
+  .toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 22px;
+  }
 
-/* スライダー */
-.slider {
-  position: absolute;
-  inset: 0;
-  cursor: pointer;
-  background-color: #ccc;
-  border-radius: 34px;
-  transition: 0.4s;
-}
+  /* 実際のチェックボックスは非表示 */
+  .toggle-switch input {
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
 
-.slider::before {
-  position: absolute;
-  bottom: 2px;
-  left: 1px;
-  width: 18px;
-  height: 18px;
-  content: "";
-  background-color: white;
-  border-radius: 50%;
-  transition: 0.4s;
-}
+  /* スライダー */
+  .slider {
+    position: absolute;
+    inset: 0;
+    cursor: pointer;
+    background-color: #ccc;
+    border-radius: 34px;
+    transition: 0.4s;
+  }
 
-/* チェックボックスがチェックされた時の状態 */
-.toggle-switch input.is-dark + .slider {
-  background-color: #2196F3;
-}
+  .slider::before {
+    position: absolute;
+    bottom: 2px;
+    left: 1px;
+    width: 18px;
+    height: 18px;
+    content: '';
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.4s;
+  }
 
-.toggle-switch input.is-dark + .slider::before {
-  transform: translateX(20px);
-}
+  /* チェックボックスがチェックされた時の状態 */
+  .toggle-switch input.is-dark + .slider {
+    background-color: #2196f3;
+  }
+
+  .toggle-switch input.is-dark + .slider::before {
+    transform: translateX(20px);
+  }
 </style>
 
 <script>
-  import "@/js/themeChanger.js"
+  import '@/js/themeChanger.js'
 </script>

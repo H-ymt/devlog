@@ -5,6 +5,8 @@ import Footer from '@/components/Footer.astro'
 import { getCollection } from 'astro:content'
 import FormattedDate from '@/components/FormattedDate.astro'
 import Container from '@/components/Container.astro'
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import Breadcrumbs from '@/components/Breadcrumbs.astro'
 
 const posts = (await getCollection('blog')).sort(
   (a: { data: { pubDate: number } }, b: { data: { pubDate: number } }) =>
@@ -12,72 +14,76 @@ const posts = (await getCollection('blog')).sort(
 )
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <BaseHead title="Blog" description="Blog page description" />
-  </head>
-  <body>
-    <Header />
-    <main>
-      <Container>
-        <section>
-          <ul class="list">
-            {
-              posts.map(
-                (post: {
-                  slug: any
-                  data: {
-                    heroImage: string | null | undefined
-                    title: unknown
-                    pubDate: Date
-                  }
-                }) => (
-                  <li class="post">
-                    <a href={`/blog/${post.slug}/`}>
-                      <img width={720} height={360} src={post.data.heroImage} alt="" class="image" transition:name={`blog-placeholder-${post.slug}`} />
-                      <h4 class="title">{post.data.title}</h4>
-                      <p class="date">
-                        <FormattedDate date={post.data.pubDate} />
-                      </p>
-                    </a>
-                  </li>
-                ),
-              )
-            }
-          </ul>
-        </section>
-      </Container>
-    </main>
-    <Footer />
-  </body>
+<BaseLayout title="Blog" description="Blog page description">
+  <Container>
+    <Breadcrumbs/>
+    <section>
+      <ul class="list">
+        {
+          posts.map(
+            (post: {
+              slug: any
+              data: {
+                heroImage: string | null | undefined
+                title: unknown
+                pubDate: Date
+              }
+            }) => (
+              <li class="post">
+                <a href={`/blog/${post.slug}/`} class="post-link">
+                  <img
+                    width={720}
+                    height={360}
+                    src={post.data.heroImage}
+                    alt=""
+                    class="image"
+                    transition:name={`blog-placeholder-${post.slug}`}
+                  />
+                  <h3 class="title">{post.data.title}</h3>
+                  <p class="date">
+                    <FormattedDate date={post.data.pubDate} />
+                  </p>
+                </a>
+              </li>
+            ),
+          )
+        }
+      </ul>
+    </section>
+  </Container>
+</BaseLayout>
+
+
+  
+  <style lang="scss">
+    .list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .post-link {
+      display: grid;
+      gap: 4px;
+      text-decoration: none;
+    }
+
+    .image {
+      width: 100%;
+      aspect-ratio: 4 / 2.5;
+      object-fit: cover;
+      border-radius: var(--rounded-sm);
+    }
+
+    .title {
+      margin-top: 6px;
+      font-size: 16px;
+      color: var(--c-text-1);
+    }
+
+    .date {
+      font-size: 12px;
+      color: var(--c-text-2);
+    }
+  </style>
 </html>
-
-<style lang="scss">
-  .list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 24px;
-  }
-
-  .post a {
-    text-decoration: none;
-  }
-
-  .image {
-    width: 100%;
-    aspect-ratio: 4 / 2.5;
-    object-fit: cover;
-    border-radius: var(--rounded-sm);
-  }
-
-  .title {
-    color: var(--c-text-1);
-  }
-
-  .date {
-    font-size: 14px;
-    color: var(--c-text-2);
-  }
-</style>
-

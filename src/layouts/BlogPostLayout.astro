@@ -5,7 +5,9 @@ import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
 import FormattedDate from '../components/FormattedDate.astro'
 import Container from '@/components/Container.astro'
-import { fade } from 'astro:transitions'
+import '@/styles/_blog.scss'
+import { Image } from 'astro:assets'
+import Breadcrumbs from '@/components/Breadcrumbs.astro'
 
 type Props = CollectionEntry<'blog'>['data']
 
@@ -20,14 +22,29 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props
 
   <body>
     <Header />
-    <main>
-      <article>
-        <div class="hero-image" transition:name="image">
-          {heroImage && <img width={1020} height={510} src={heroImage} alt="" loading="eager" fetchpriority="high" class="image" transition:name={`blog-placeholder-${slug}`} />}
-        </div>
-        <Container>
+    <main class="container">
+        <Breadcrumbs/>
+        <article>
+          <div class="hero-image">
+            {
+              heroImage && (
+                <Image
+                  width={1020}
+                  height={510}
+                  src={heroImage}
+                  format="webp"
+                  alt=""
+                  loading="eager"
+                  fetchpriority="high"
+                  class="image"
+                  transition:name={`blog-placeholder-${slug}`}
+                />
+              )
+            }
+          </div>
           <div class="prose">
             <div class="title">
+              <h1>{title}</h1>
               <div class="date">
                 <FormattedDate date={pubDate} />
                 {
@@ -38,95 +55,45 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props
                   )
                 }
               </div>
-              <h1>{title}</h1>
-              <hr />
             </div>
             <slot />
           </div>
-        </Container>
-      </article>
+
+          <a href="vscode://file/blog/markdown-style-guide/"></a>
+        </article>
     </main>
     <Footer />
   </body>
+  
+  <script>
+    const headings = document.querySelectorAll('h2')
+    const tocContainer = document.getElementById('toc')
+    const tocList = document.createElement('ul')
+    tocContainer?.appendChild(tocList)
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const id = entry.target.id
+          const tocLink = document.querySelector(`a[href="#${id}"]`)
+          if (entry.isIntersecting) {
+            tocLink?.classList.add('highlight')
+          } else {
+            tocLink?.classList.remove('highlight')
+          }
+        })
+      },
+      { rootMargin: '-20% 0px -80% 0px' },
+    )
+
+    headings.forEach((heading) => {
+      const tocItem = document.createElement('li')
+      const tocLink = document.createElement('a')
+      tocLink.href = `#${heading.id}`
+      tocLink.textContent = heading.textContent
+      tocItem.appendChild(tocLink)
+      tocList.appendChild(tocItem)
+      observer.observe(heading)
+    })
+  </script>
 </html>
-
-<style lang="scss">
-  pre {
-  padding: 20px 24px;
-  background: var(--c-pre-bg);
-  border-radius: var(--rounded);
-}
-
-.hero-image {
-  width: 100%;
-}
-
-.hero-image img {
-  display: block;
-  width: min(800px, 100%);
-  aspect-ratio: 4 / 2.5;
-  margin: 0 auto;
-  object-fit: cover;
-  border-radius: 12px;
-  box-shadow: var(--box-shadow);
-}
-
-.prose {
-  width: 720px;
-  max-width: calc(100% - 2em);
-  padding: 1em;
-  margin: auto;
-  color: rgb(var(--gray-dark));
-}
-
-.title {
-  padding: 1em 0;
-  margin-bottom: 1em;
-  line-height: 1;
-  text-align: center;
-}
-
-.title h1 {
-  margin: 0 0 0.5em;
-}
-
-.date {
-  margin-bottom: 0.5em;
-  color: rgb(var(--gray));
-}
-
-.last-updated-on {
-  font-style: italic;
-}
-</style>
-
-
-<script>
-  const headings = document.querySelectorAll('h2');
-    const tocContainer = document.getElementById('toc');
-    const tocList = document.createElement('ul');
-    tocContainer?.appendChild(tocList);
-
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        const id = entry.target.id;
-        const tocLink = document.querySelector(`a[href="#${id}"]`);
-        if (entry.isIntersecting) {
-          tocLink?.classList.add('highlight');
-        } else {
-          tocLink?.classList.remove('highlight');
-        }
-      });
-    }, { rootMargin: '-20% 0px -80% 0px' });
-
-    headings.forEach(heading => {
-      const tocItem = document.createElement('li');
-      const tocLink = document.createElement('a');
-      tocLink.href = `#${heading.id}`;
-      tocLink.textContent = heading.textContent;
-      tocItem.appendChild(tocLink);
-      tocList.appendChild(tocItem);
-      observer.observe(heading);
-    });
-</script>
-</script>

@@ -1,7 +1,12 @@
 ---
-import BaseLayout from "@/layouts/BaseLayout.astro";
+import Breadcrumbs from '@/components/Breadcrumbs.astro'
+import Container from '@/components/Container.astro'
+import BaseLayout from '@/layouts/BaseLayout.astro'
 ---
 
 <BaseLayout title="Contact" description="Contact page description">
-  <h1>Contact</h1>
+  <Container>
+    <Breadcrumbs />
+    <h1>Contact</h1>
+  </Container>
 </BaseLayout>
