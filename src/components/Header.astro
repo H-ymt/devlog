@@ -4,18 +4,27 @@ import HeaderLink from './HeaderLink.astro'
 ---
 
 <header class="header">
-  <nav class="nav">
-    <a href="/" class="logo">DevLog</a>
+  <div class="header-inner">
+    <a
+      href="/"
+      class="logo"
+      >DevLog</a
+    >
 
-    <div class="links">
-      <div class="internal-links">
-        <HeaderLink href="/">HOME</HeaderLink>
-        <HeaderLink href="/blog/">BLOG</HeaderLink>
-        <HeaderLink href="/contact/">CONTACT</HeaderLink>
+    <nav
+      class="nav"
+      aria-label="グローバルナビゲーション"
+    >
+      <div class="links">
+        <div class="internal-links">
+          <HeaderLink href="/">HOME</HeaderLink>
+          <HeaderLink href="/blog/">BLOG</HeaderLink>
+          <HeaderLink href="/contact/">CONTACT</HeaderLink>
+        </div>
+        <ExtraNavigation />
       </div>
-      <ExtraNavigation />
-    </div>
-  </nav>
+    </nav>
+  </div>
 </header>
 
 <style lang="scss">
@@ -27,7 +36,7 @@ import HeaderLink from './HeaderLink.astro'
     border-bottom: 1px solid var(--c-border);
   }
 
-  .nav {
+  .header-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;

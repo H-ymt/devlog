@@ -2,7 +2,10 @@
 const { class: className, ...props } = Astro.props
 ---
 
-<div class:list={['container', className]} {...props}>
+<div
+  class:list={['container', className]}
+  {...props}
+>
   <slot />
 </div>
 

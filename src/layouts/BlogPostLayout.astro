@@ -16,83 +16,57 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props
 
 <html lang="ja">
   <head>
-    <BaseHead title={title} description={description} />
+    <BaseHead
+      title={title}
+      description={description}
+    />
   </head>
 
   <body>
     <Header />
     <main class="container">
-        <Breadcrumbs/>
-        <article>
-          <div class="hero-image">
-            {
-              heroImage && (
-                <Image
-                  width={1020}
-                  height={510}
-                  src={heroImage}
-                  format="webp"
-                  alt=""
-                  loading="eager"
-                  fetchpriority="high"
-                  class="image"
-                  transition:name={`blog-placeholder-${slug}`}
-                />
-              )
-            }
-          </div>
-          <div class="prose">
-            <div class="title">
-              <h1>{title}</h1>
-              <div class="date">
-                <FormattedDate date={pubDate} />
-                {
-                  updatedDate && (
-                    <div class="last-updated-on">
-                      Last updated on <FormattedDate date={updatedDate} />
-                    </div>
-                  )
-                }
-              </div>
+      <Breadcrumbs />
+      <article>
+        <div class="hero-image">
+          {
+            heroImage && (
+              <Image
+                width={1020}
+                height={510}
+                src={heroImage}
+                format="webp"
+                alt=""
+                loading="eager"
+                fetchpriority="high"
+                class="image"
+                transition:name={`blog-placeholder-${slug}`}
+              />
+            )
+          }
+        </div>
+        <div class="prose">
+          <div class="title">
+            <h1>{title}</h1>
+            <div class="date">
+              <FormattedDate date={pubDate} />
+              {
+                updatedDate && (
+                  <div class="last-updated-on">
+                    Last updated on <FormattedDate date={updatedDate} />
+                  </div>
+                )
+              }
             </div>
-            <slot />
           </div>
+          <slot />
+        </div>
 
-          <a href={`vscode://file/Users/hymt/Develop/astro/devlog/src/content/blog/${slug}.md`}>Edit</a>
-        </article>
+        <a
+          href={`vscode://file/Users/hymt/Develop/astro/devlog/src/content/blog/${slug}.md`}
+          >Edit</a
+        >
+      </article>
     </main>
     <Footer />
   </body>
-  
-  <script>
-    const headings = document.querySelectorAll('h2')
-    const tocContainer = document.getElementById('toc')
-    const tocList = document.createElement('ul')
-    tocContainer?.appendChild(tocList)
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const id = entry.target.id
-          const tocLink = document.querySelector(`a[href="#${id}"]`)
-          if (entry.isIntersecting) {
-            tocLink?.classList.add('highlight')
-          } else {
-            tocLink?.classList.remove('highlight')
-          }
-        })
-      },
-      { rootMargin: '-20% 0px -80% 0px' },
-    )
-
-    headings.forEach((heading) => {
-      const tocItem = document.createElement('li')
-      const tocLink = document.createElement('a')
-      tocLink.href = `#${heading.id}`
-      tocLink.textContent = heading.textContent
-      tocItem.appendChild(tocLink)
-      tocList.appendChild(tocItem)
-      observer.observe(heading)
-    })
-  </script>
 </html>

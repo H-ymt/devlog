@@ -14,9 +14,12 @@ const posts = (await getCollection('blog')).sort(
 )
 ---
 
-<BaseLayout title="Blog" description="Blog page description">
+<BaseLayout
+  title="Blog"
+  description="Blog page description"
+>
   <Container>
-    <Breadcrumbs/>
+    <Breadcrumbs />
     <section>
       <ul class="list">
         {
@@ -30,7 +33,10 @@ const posts = (await getCollection('blog')).sort(
               }
             }) => (
               <li class="post">
-                <a href={`/blog/${post.slug}/`} class="post-link">
+                <a
+                  href={`/blog/${post.slug}/`}
+                  class="post-link"
+                >
                   <img
                     width={720}
                     height={360}
@@ -53,37 +59,34 @@ const posts = (await getCollection('blog')).sort(
   </Container>
 </BaseLayout>
 
+<style lang="scss">
+  .list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
 
-  
-  <style lang="scss">
-    .list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-    }
+  .post-link {
+    display: grid;
+    gap: 4px;
+    text-decoration: none;
+  }
 
-    .post-link {
-      display: grid;
-      gap: 4px;
-      text-decoration: none;
-    }
+  .image {
+    width: 100%;
+    aspect-ratio: 4 / 2.5;
+    object-fit: cover;
+    border-radius: var(--rounded-sm);
+  }
 
-    .image {
-      width: 100%;
-      aspect-ratio: 4 / 2.5;
-      object-fit: cover;
-      border-radius: var(--rounded-sm);
-    }
+  .title {
+    margin-top: 6px;
+    font-size: 16px;
+    color: var(--c-text-1);
+  }
 
-    .title {
-      margin-top: 6px;
-      font-size: 16px;
-      color: var(--c-text-1);
-    }
-
-    .date {
-      font-size: 12px;
-      color: var(--c-text-2);
-    }
-  </style>
-</html>
+  .date {
+    font-size: 12px;
+    color: var(--c-text-2);
+  }
+</style>

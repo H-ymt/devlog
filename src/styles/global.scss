@@ -1,9 +1,9 @@
 :root {
-// layout
---container-width: 1040px;
---header-height: 60px;
+  // layout
+  --container-width: 1040px;
+  --header-height: 60px;
 
-// border radius
+  // border radius
   --rounded-sm: 4px;
   --rounded: 8px;
   --rounded-md: 10px;
@@ -11,7 +11,7 @@
   --rounded-full: 99rem;
 
   // font
-  --font-mplus: "M PLUS Rounded 1c", sans-serif;
+  --font-mplus: 'M PLUS Rounded 1c', sans-serif;
   --font-notosans: 'Noto Sans JP Variable', sans-serif;
 
   // color
@@ -20,34 +20,33 @@
   --c-background-header: 255 255 255;
   --c-text-1: #0f1419;
   --c-text-2: #7e8184;
-  --c-primary:#1D9BF0;
-  --c-primary-light:#2898e3;
-  --c-primary-lighter:#3ca2e6;
-  --c-primary-lightest:#7eb5da;
-  --c-primary-dark:#1E40AF;
-  --c-primary-darker:#1E3A8A;
+  --c-primary: #1d9bf0;
+  --c-primary-light: #2898e3;
+  --c-primary-lighter: #3ca2e6;
+  --c-primary-lightest: #7eb5da;
+  --c-primary-dark: #1e40af;
+  --c-primary-darker: #1e3a8a;
   --c-border: #d6e3ed;
   --c-border-light: #eff3f4;
   --c-shadow: 0 12px 32px rgb(0 0 0 / 10%), 0 2px 6px rgb(0 0 0 / 8%);
 }
 
-
 .dark {
   // color
-  --c-background:#1b1b1f;
+  --c-background: #1b1b1f;
   --c-background-soft: #27282f;
   --c-background-header: 27, 27, 31;
-    --c-text-1: #E7E9EA;
-    --c-text-2: #ebebf599;
-    --c-primary:#1D9BF0;
-    --c-primary-light:#2898e3;
-    --c-primary-lighter:#3ca2e6;
-    --c-primary-lightest:#7eb5da;
-    --c-primary-dark:#1E40AF;
-    --c-primary-darker:#1E3A8A;
-    --c-border: #2e2e32;
-    --c-border-light: #3a3a3e;
-  }
+  --c-text-1: #e7e9ea;
+  --c-text-2: #ebebf599;
+  --c-primary: #1d9bf0;
+  --c-primary-light: #2898e3;
+  --c-primary-lighter: #3ca2e6;
+  --c-primary-lightest: #7eb5da;
+  --c-primary-dark: #1e40af;
+  --c-primary-darker: #1e3a8a;
+  --c-border: #2e2e32;
+  --c-border-light: #3a3a3e;
+}
 
 * {
   padding: 0;
@@ -76,7 +75,9 @@ main {
 a {
   color: var(--c-primary);
   text-decoration: none;
-  transition: color 0.25s, opacity 0.25s;
+  transition:
+    color 0.25s,
+    opacity 0.25s;
 
   @include hover {
     color: var(--c-primary-light);
@@ -95,19 +96,14 @@ img {
   height: auto;
 }
 
-
-
 button {
   cursor: pointer;
 }
-
 
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation-duration: 0.3s;
 }
-
-
 
 .sr-only {
   position: absolute !important;
