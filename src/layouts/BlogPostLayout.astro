@@ -1,5 +1,4 @@
 ---
-import Breadcrumbs from '@/components/Breadcrumbs.astro'
 import { Image } from 'astro:assets'
 import type { CollectionEntry } from 'astro:content'
 import BaseHead from '../components/BaseHead.astro'
@@ -48,7 +47,6 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props
     </a>
 
     <main class="container">
-      <Breadcrumbs />
       <article>
         <div class="hero-image">
           {
@@ -81,10 +79,19 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props
               }
             </div>
           </div>
-          <slot />
+
+          <div class="grid-layout">
+            <div class="blog-content">
+              <slot />
+            </div>
+            <div class="table"></div>
+          </div>
         </div>
       </article>
     </main>
     <Footer />
+    <script>
+      import '@/js/tableOfContent.js'
+    </script>
   </body>
 </html>

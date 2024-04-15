@@ -64,14 +64,18 @@
 <style lang="scss">
   .footer {
     display: grid;
-    gap: 32px;
-    padding: 64px 16px;
-    margin-top: 110px;
+    gap: 48px;
+    padding: 80px 16px;
+    margin-top: 120px;
     font-size: 16px;
     font-weight: 300;
     color: var(--c-text-3);
     text-align: center;
     background: var(--c-background-soft);
+
+    @include mq(lg) {
+      margin-top: 320px;
+    }
   }
 
   .internal-links {

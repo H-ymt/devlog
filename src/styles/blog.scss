@@ -57,7 +57,8 @@ img {
   border-radius: var(--rounded-sm);
 }
 
-:where(ul, ol) {
+.blog-content > ul,
+ol {
   display: grid;
   gap: 4px;
   padding-top: 8px;
@@ -88,7 +89,7 @@ li {
 }
 
 .container {
-  width: min(760px, 100%);
+  width: min(1100px, 100%);
   padding-inline: 28px;
   margin-inline: auto;
 }
@@ -99,18 +100,25 @@ li {
 
 .hero-image img {
   display: block;
-  width: 100%;
-  aspect-ratio: 4 / 2.5;
-  margin: 0 auto;
+  aspect-ratio: 4 / 2;
+  margin-inline: auto;
   object-fit: cover;
   border-radius: var(--rounded-sm);
   box-shadow: var(--box-shadow);
+
+  @include mq(lg) {
+    width: min(100%, 800px);
+  }
 }
 
 .title {
   padding: 40px 0 24px;
   font-size: 20px;
   line-height: 1.5;
+
+  @include mq(lg) {
+    text-align: center;
+  }
 }
 
 .date {
@@ -122,4 +130,66 @@ li {
 
 .last-updated-on {
   font-style: italic;
+}
+
+.grid-layout {
+  display: flex;
+  gap: 50px;
+  justify-content: center;
+}
+
+.table {
+  display: none;
+
+  @include mq(lg) {
+    position: sticky;
+    top: 24px;
+    display: block;
+    width: min(260px, 100%);
+    min-width: 260px;
+    height: fit-content;
+    max-height: calc(100vh - 50px);
+    padding: 20px;
+    margin-top: 48px;
+    border: 1px solid var(--c-border);
+    border-radius: var(--rounded);
+  }
+}
+
+.table li {
+  list-style-type: none;
+}
+
+.table a {
+  display: block;
+  width: 100%;
+  line-height: 1.5;
+  color: var(--c-text-3);
+  border-radius: var(--rounded-sm);
+  transition: color 0.3s ease;
+
+  @include hover {
+    color: var(--c-text-1);
+    transition: color 0.3s ease;
+  }
+}
+
+.table .h2 {
+  padding-block: 6px;
+}
+
+.table .h3 {
+  padding-top: 4px;
+}
+
+.h2 a {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.h3 a {
+  display: block;
+  padding-left: 8px;
+  font-size: 14px;
+  font-weight: 300;
 }
