@@ -4,8 +4,6 @@ interface BreadcrumbItem {
   path?: string
 }
 
-const { pathname } = Astro.url
-
 export async function getBreadcrumbs(path: string): Promise<BreadcrumbItem[]> {
   const breadcrumbs: BreadcrumbItem[] = []
   const paths = path.split('/').filter((path) => path !== '')
@@ -74,6 +72,7 @@ export async function getBreadcrumbs(path: string): Promise<BreadcrumbItem[]> {
     align-items: center;
     padding: 0;
     padding-bottom: 24px;
+    margin: 0;
     list-style: none;
   }
 
@@ -81,6 +80,10 @@ export async function getBreadcrumbs(path: string): Promise<BreadcrumbItem[]> {
     font-size: 14px;
     color: var(--c-text-1);
     transition: color 0.3s;
+  }
+
+  :where(.homepath, .subpath) {
+    list-style-type: none;
   }
 
   .homepath-link {

@@ -1,7 +1,8 @@
 ---
+import BlogList from '@/components/BlogList.astro'
 import Breadcrumbs from '@/components/Breadcrumbs.astro'
 import Container from '@/components/Container.astro'
-import FormattedDate from '@/components/FormattedDate.astro'
+import { BLOG_PAGE_LIMIT } from '@/consts'
 import BaseLayout from '@/layouts/BaseLayout.astro'
 import { getCollection } from 'astro:content'
 
@@ -18,40 +19,7 @@ const posts = (await getCollection('blog')).sort(
   <Container>
     <Breadcrumbs />
     <section>
-      <ul class="list">
-        {
-          posts.map(
-            (post: {
-              slug: any
-              data: {
-                heroImage: string | null | undefined
-                title: unknown
-                pubDate: Date
-              }
-            }) => (
-              <li class="post">
-                <a
-                  href={`/blog/${post.slug}/`}
-                  class="post-link"
-                >
-                  <img
-                    width={720}
-                    height={360}
-                    src={post.data.heroImage}
-                    alt=""
-                    class="image"
-                    transition:name={`blog-placeholder-${post.slug}`}
-                  />
-                  <h3 class="title">{post.data.title}</h3>
-                  <p class="date">
-                    <FormattedDate date={post.data.pubDate} />
-                  </p>
-                </a>
-              </li>
-            ),
-          )
-        }
-      </ul>
+      <BlogList limit={BLOG_PAGE_LIMIT} />
     </section>
   </Container>
 </BaseLayout>
@@ -65,12 +33,12 @@ const posts = (await getCollection('blog')).sort(
 
   .post-link {
     display: grid;
-    gap: 4px;
+    gap: 6px;
     text-decoration: none;
   }
 
   .image {
-    width: 100%;
+    width: min(100%, 280px);
     aspect-ratio: 4 / 2.5;
     object-fit: cover;
     border-radius: var(--rounded-sm);
@@ -78,12 +46,35 @@ const posts = (await getCollection('blog')).sort(
 
   .title {
     margin-top: 6px;
-    font-size: 16px;
+    font-size: 14px;
     color: var(--c-text-1);
   }
 
   .date {
     font-size: 12px;
     color: var(--c-text-2);
+  }
+
+  .tag-list {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    margin-top: 2px;
+  }
+
+  .tag {
+    display: flex;
+    gap: 1px;
+    align-items: center;
+    padding: 4px 14px;
+    font-size: 10px;
+    color: var(--c-text-2);
+    background: transparent;
+    border: 1px solid var(--c-border);
+    border-radius: var(--rounded-full);
+
+    @include hover {
+      background: var(--c-background-soft);
+    }
   }
 </style>

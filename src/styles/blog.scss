@@ -14,8 +14,8 @@ h6 {
 }
 
 h2 {
-  padding-bottom: 4px;
-  margin-block: 55px 20px;
+  padding-bottom: 6px;
+  margin-block: 55px 0;
   font-size: 24px;
   border-bottom: 1px solid var(--c-border);
 }
@@ -36,15 +36,49 @@ h6 {
 }
 
 p {
-  margin-top: 24px;
+  margin-top: 20px;
+  line-height: 1.6;
+  letter-spacing: 0.06em;
 }
 
 img {
   border-radius: var(--rounded-sm);
 }
 
+ul,
+ol {
+  display: grid;
+  gap: 4px;
+  padding-top: 20px;
+  padding-left: 12px;
+  margin-left: 20px;
+}
+
+li {
+  list-style-type: disc;
+}
+
+.back-button {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: fit-content;
+  padding: 7px;
+  margin-top: 30px;
+  margin-left: 4%;
+  border-radius: 50%;
+  transition: background 0.3s ease;
+
+  @include hover {
+    background: var(--c-background-soft);
+    transition: background 0.3s ease;
+  }
+}
+
 .container {
-  width: min(750px, 100%);
+  width: min(760px, 100%);
+  padding-inline: 28px;
   margin-inline: auto;
 }
 
@@ -54,7 +88,7 @@ img {
 
 .hero-image img {
   display: block;
-  width: min(800px, 100%);
+  width: 100%;
   aspect-ratio: 4 / 2.5;
   margin: 0 auto;
   object-fit: cover;
@@ -64,14 +98,14 @@ img {
 
 .title {
   padding: 40px 0 12px;
-  font-size: 24px;
-  line-height: 1;
-  text-align: center;
+  font-size: 20px;
+  line-height: 1.5;
 }
 
 .date {
-  margin-top: 24px;
+  margin-top: 16px;
   font-size: 14px;
+  font-weight: 300;
   color: var(--c-text-2);
 }
 

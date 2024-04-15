@@ -11,8 +11,8 @@
   --rounded-full: 99rem;
 
   // font
-  --font-mplus: 'M PLUS Rounded 1c', sans-serif;
   --font-notosans: 'Noto Sans JP Variable', sans-serif;
+  --font-inter: 'Inter', sans-serif;
 
   // color
   --c-background: #fff;
@@ -58,7 +58,7 @@ body {
   grid-template-rows: auto 1fr auto;
   grid-template-columns: 100%;
   min-height: 100vh;
-  font-family: var(--font-notosans);
+  font-family: var(--font-inter);
   font-size: 16px;
   font-weight: 400;
   color: var(--c-text-1);

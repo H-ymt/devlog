@@ -1,6 +1,7 @@
 ---
 import BlogList from '@/components/BlogList.astro'
 import Container from '@/components/Container.astro'
+import { TOP_PAGE_LIMIT } from '@/consts'
 import BaseLayout from '@/layouts/BaseLayout.astro'
 ---
 
@@ -11,7 +12,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro'
       />HTML/CSS/JavaScriptの技術情報を中心に発信していきます。
     </p>
 
-    <BlogList />
+    <BlogList limit={TOP_PAGE_LIMIT} />
   </Container>
 </BaseLayout>
 

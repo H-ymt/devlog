@@ -2,6 +2,8 @@
 import { getCollection } from 'astro:content'
 import FormattedDate from './FormattedDate.astro'
 
+const { limit } = Astro.props
+
 const posts = (await getCollection('blog')).sort(
   (a: { data: { pubDate: number } }, b: { data: { pubDate: number } }) =>
     a.data.pubDate.valueOf() - b.data.pubDate.valueOf(),
@@ -10,13 +12,14 @@ const posts = (await getCollection('blog')).sort(
 
 <ul class="list">
   {
-    posts.slice(0, 6).map(
+    posts.slice(0, limit).map(
       (post: {
         slug: any
         data: {
           heroImage: string | null | undefined
           title: unknown
           pubDate: Date
+          tags: string
         }
       }) => (
         <li class="post">
@@ -36,6 +39,15 @@ const posts = (await getCollection('blog')).sort(
             <p class="date">
               <FormattedDate date={post.data.pubDate} />
             </p>
+            <ul class="tag-list">
+              {Array.isArray(post.data.tags) &&
+                post.data.tags.map((tag) => (
+                  <li class="tag">
+                    <span aria-hidden="true">#</span>
+                    {tag}
+                  </li>
+                ))}
+            </ul>
           </a>
         </li>
       ),
@@ -53,17 +65,19 @@ const posts = (await getCollection('blog')).sort(
   }
 
   .post {
-    display: grid;
+    display: inline-grid;
     grid-template-rows: subgrid;
     row-gap: 12px;
+    width: min(100%, 280px);
   }
 
   .post-link {
+    display: inline-grid;
+    gap: 6px;
     text-decoration: none;
   }
 
   .image {
-    width: 100%;
     aspect-ratio: 4 / 2.5;
     object-fit: cover;
     border-radius: var(--rounded-sm);
@@ -71,12 +85,38 @@ const posts = (await getCollection('blog')).sort(
 
   .title {
     margin-top: 6px;
-    font-size: 16px;
+    font-size: 14px;
+    font-weight: 500;
     color: var(--c-text-1);
   }
 
   .date {
+    padding-left: 2px;
     font-size: 12px;
+    font-weight: 300;
     color: var(--c-text-2);
+  }
+
+  .tag-list {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    margin-top: 2px;
+  }
+
+  .tag {
+    display: flex;
+    gap: 1px;
+    align-items: center;
+    padding: 3px 14px;
+    font-size: 10px;
+    color: var(--c-text-2);
+    background: transparent;
+    border: 1px solid var(--c-border);
+    border-radius: var(--rounded-full);
+
+    @include hover {
+      background: var(--c-background-soft);
+    }
   }
 </style>
