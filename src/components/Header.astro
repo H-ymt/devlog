@@ -1,4 +1,6 @@
 ---
+import Logo from '@/images/logo.png'
+import { Image } from 'astro:assets'
 import ExtraNavigation from './ExtraNavigation.astro'
 import HeaderLink from './HeaderLink.astro'
 ---
@@ -8,7 +10,14 @@ import HeaderLink from './HeaderLink.astro'
     <a
       href="/"
       class="logo"
-      >DevLog</a
+      ><Image
+        src={Logo}
+        alt="logo"
+        width={24}
+        height={24}
+        loading="eager"
+        fetchpriority="high"
+      /></a
     >
 
     <nav
@@ -46,13 +55,8 @@ import HeaderLink from './HeaderLink.astro'
     margin-inline: auto;
   }
 
-  .logo {
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--c-text-1);
-    text-decoration: none;
-    letter-spacing: 0.07em;
+  .logo img {
+    border-radius: var(--rounded-full);
   }
 
   .nav {
