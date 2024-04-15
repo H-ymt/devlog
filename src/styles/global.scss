@@ -19,7 +19,8 @@
   --c-background-soft: #f4f4f4;
   --c-background-header: 255 255 255;
   --c-text-1: #0f1419;
-  --c-text-2: #7e8184;
+  --c-text-2: #585858;
+  --c-text-3: #7e8184;
   --c-primary: #1d9bf0;
   --c-primary-light: #2898e3;
   --c-primary-lighter: #3ca2e6;
@@ -37,7 +38,8 @@
   --c-background-soft: #27282f;
   --c-background-header: 27, 27, 31;
   --c-text-1: #e7e9ea;
-  --c-text-2: #ebebf599;
+  --c-text-2: #cecece;
+  --c-text-3: #ebebf599;
   --c-primary: #1d9bf0;
   --c-primary-light: #2898e3;
   --c-primary-lighter: #3ca2e6;
@@ -61,7 +63,7 @@ body {
   font-family: var(--font-inter);
   font-size: 16px;
   font-weight: 400;
-  color: var(--c-text-1);
+  color: var(--c-text-2);
   word-wrap: break-word;
   overflow-wrap: break-word;
   background: var(--c-background);
@@ -70,6 +72,10 @@ body {
 
 main {
   padding-top: 60px;
+}
+
+:is(h1, h2, h3, h4, h5, h6) {
+  color: var(--c-text-1);
 }
 
 a {
