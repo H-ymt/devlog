@@ -57,8 +57,7 @@ img {
   border-radius: var(--rounded-sm);
 }
 
-ul,
-ol {
+:where(ul, ol) {
   display: grid;
   gap: 4px;
   padding-top: 20px;
