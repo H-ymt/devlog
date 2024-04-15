@@ -68,8 +68,6 @@ export async function getBreadcrumbs(path: string): Promise<BreadcrumbItem[]> {
 
 <style>
   .breadcrumbs {
-    display: flex;
-    align-items: center;
     padding: 0;
     padding-bottom: 24px;
     margin: 0;
@@ -83,12 +81,8 @@ export async function getBreadcrumbs(path: string): Promise<BreadcrumbItem[]> {
   }
 
   :where(.homepath, .subpath) {
+    width: fit-content;
     list-style-type: none;
-  }
-
-  .homepath-link {
-    display: flex;
-    align-items: center;
   }
 
   .subpath::before {

@@ -55,6 +55,14 @@ import HeaderLink from './HeaderLink.astro'
     letter-spacing: 0.07em;
   }
 
+  .nav {
+    display: none;
+
+    @include mq(md) {
+      display: block;
+    }
+  }
+
   .links {
     display: flex;
     align-items: center;
