@@ -2,7 +2,10 @@
 title: 'Astroで制作した本サイトの技術構成'
 description: 'Astroで制作した本サイトの技術構成を紹介します。'
 pubDate: 'Jul 08 2022'
-tags: ['html', 'css', 'javascript']
+tags:
+  - html
+  - css
+  - javascript
 heroImage: '/blog-placeholder-3.jpg'
 ---
 
