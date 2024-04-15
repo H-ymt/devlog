@@ -35,7 +35,7 @@
 .dark {
   // color
   --c-background: #1b1b1f;
-  --c-background-soft: #27282f;
+  --c-background-soft: #262629;
   --c-background-header: 27, 27, 31;
   --c-text-1: #e7e9ea;
   --c-text-2: #cecece;
@@ -71,7 +71,11 @@ body {
 }
 
 main {
-  padding-top: 60px;
+  padding-top: 40px;
+
+  @include mq(md) {
+    margin-top: 60px;
+  }
 }
 
 :is(h1, h2, h3, h4, h5, h6) {

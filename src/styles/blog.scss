@@ -23,7 +23,7 @@ h1 {
 
 h2 {
   padding-bottom: 6px;
-  margin-block: 55px 0;
+  margin-block: 48px 0;
   font-size: 20px;
   border-bottom: 1px solid var(--c-border);
 
@@ -48,7 +48,7 @@ h6 {
 }
 
 p {
-  margin-top: 20px;
+  margin-block: 20px 16px;
   line-height: 1.6;
   letter-spacing: 0.06em;
 }
@@ -60,7 +60,7 @@ img {
 :where(ul, ol) {
   display: grid;
   gap: 4px;
-  padding-top: 20px;
+  padding-top: 8px;
   padding-left: 12px;
   margin-left: 20px;
 }
@@ -108,7 +108,7 @@ li {
 }
 
 .title {
-  padding: 40px 0 12px;
+  padding: 40px 0 24px;
   font-size: 20px;
   line-height: 1.5;
 }

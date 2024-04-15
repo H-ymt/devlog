@@ -14,7 +14,7 @@ const posts = (await getCollection('blog')).sort(
   {
     posts.slice(0, limit).map(
       (post: {
-        slug: any
+        slug: string
         data: {
           heroImage: string | null | undefined
           title: unknown

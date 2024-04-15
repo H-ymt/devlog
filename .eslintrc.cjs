@@ -4,21 +4,27 @@ module.exports = {
     es2021: true,
     node: true,
   },
-  extends: ["eslint:recommended"],
+  extends: ['plugin:astro/recommended'],
+  parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+    project: './tsconfig.json',
+  },
   overrides: [
     {
-      files: ["*.astro"],
-      extends: [
-        "plugin:@typescript-eslint/recommended",
-      ],
-      parser: "astro-eslint-parser",
+      files: ['*.ts'],
+      parser: '@typescript-eslint/parser',
+    },
+    {
+      files: ['*.astro'],
+      extends: ['plugin:@typescript-eslint/recommended'],
+      parser: 'astro-eslint-parser',
       parserOptions: {
-        ecmaversion: "latest",
-        sourcetype: "module",
-        parser: "@typescript-eslint/parser",
-        extraFileExtensions: [".astro"],
+        sourcetype: 'module',
+        ecmaversion: 'latest',
+        parser: '@typescript-eslint/parser',
+        extraFileExtensions: ['.astro'],
       },
-      rules: {},
     },
   ],
-};
+}
