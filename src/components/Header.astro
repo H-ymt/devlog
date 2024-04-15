@@ -1,20 +1,21 @@
 ---
 import Logo from '@/images/logo.png'
 import { Image } from 'astro:assets'
+import Container from './Container.astro'
 import ExtraNavigation from './ExtraNavigation.astro'
 import HeaderLink from './HeaderLink.astro'
 ---
 
 <header class="header">
-  <div class="header-inner">
+  <Container class="header-inner">
     <a
       href="/"
       class="logo"
       ><Image
         src={Logo}
         alt="logo"
-        width={24}
-        height={24}
+        width={32}
+        height={32}
         format="webp"
         loading="eager"
         fetchpriority="high"
@@ -35,16 +36,13 @@ import HeaderLink from './HeaderLink.astro'
         <ExtraNavigation />
       </div>
     </nav>
-  </div>
+  </Container>
 </header>
 
 <style lang="scss">
   .header {
     z-index: 1;
-    padding: 0 32px;
-    background: rgb(var(--c-background-header) / 85%);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--c-border);
+    padding: 60px 32px;
   }
 
   .header-inner {
@@ -52,7 +50,6 @@ import HeaderLink from './HeaderLink.astro'
     align-items: center;
     justify-content: space-between;
     max-width: var(--container-width);
-    height: var(--header-height);
     margin-inline: auto;
   }
 

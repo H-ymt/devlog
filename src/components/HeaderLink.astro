@@ -24,33 +24,19 @@ const currentPath = href === pathname || null
   .headerLink {
     --header-padding: 12px;
 
-    position: relative;
     display: block;
     padding: 0 var(--header-padding);
     font-size: 14px;
-    font-weight: 400;
     line-height: var(--header-height);
-    color: var(--c-text-1);
+    color: var(--c-text-3);
     text-decoration: none;
     letter-spacing: 0.02em;
-    transition: background-color 0.2s ease;
+    transition: font-weight 0.25s ease;
 
     @include hover {
       color: var(--c-text-1);
+      transition: font-weight 0.25s ease;
     }
-  }
-
-  .headerLink.active::after {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    display: inline-block;
-    width: calc(100% - var(--header-padding) * 2);
-    height: 3px;
-    content: '';
-    background-color: var(--c-primary);
-    border-radius: var(--rounded-lg);
-    transform: translateX(-50%);
   }
 
   .active {

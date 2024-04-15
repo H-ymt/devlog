@@ -1,6 +1,6 @@
 :root {
   // layout
-  --container-width: 1040px;
+  --container-width: 900px;
   --header-height: 60px;
 
   // border radius
@@ -70,10 +70,6 @@ body {
   overflow-wrap: break-word;
   background: var(--c-background);
   scrollbar-color: rgb(185 202 211) rgb(247 249 249);
-}
-
-main {
-  margin-top: 40px;
 }
 
 :is(h1, h2, h3, h4, h5, h6) {
