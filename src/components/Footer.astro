@@ -75,9 +75,14 @@
   }
 
   .internal-links {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 24px;
+    margin-inline: auto;
+
+    @include mq(sm) {
+      grid-template-columns: repeat(4, 1fr);
+    }
   }
 
   .internal-link {
