@@ -31,10 +31,6 @@ heroImage: '/blog-placeholder-3.jpg'
 他の主なホスティング先としては、VercelやNetlifyがあげられますがVercelだと、将来サイト内に広告をつけたくなった場合に課金プランに移行しなければならないため、選定先から外しました。
 NetlifyはCDNのキャッシュサーバーが日本になく、Cloudflare Pagesより速度的に劣るらしいので、消去法でCloudflare Pagesを選定しました。
 
-### Vercel
-
-### Netlify
-
 ## フレームワーク
 
 静的サイト生成としてAstroを使用しています。
