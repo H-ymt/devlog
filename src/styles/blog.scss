@@ -13,11 +13,23 @@ h6 {
   font-weight: 700;
 }
 
+h1 {
+  font-size: 26px;
+
+  @include mq(md) {
+    font-size: 30px;
+  }
+}
+
 h2 {
   padding-bottom: 6px;
   margin-block: 55px 0;
-  font-size: 24px;
+  font-size: 20px;
   border-bottom: 1px solid var(--c-border);
+
+  @include mq(md) {
+    font-size: 24px;
+  }
 }
 
 h3 {
