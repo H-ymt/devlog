@@ -1,19 +1,27 @@
 ---
+import BlogList from '@/components/BlogList.astro'
 import Container from '@/components/Container.astro'
 import BaseLayout from '@/layouts/BaseLayout.astro'
 ---
 
 <BaseLayout title="">
   <Container>
-    <h1>タイトルのテキストです</h1>
-    <h2>H2タイトル</h2>
-    <p class="text">本文のテキストです</p>
-    <a href="/">Home</a>
+    <p class="top-text">
+      Webエンジニアによるテックブログです。<br
+      />HTML/CSS/JavaScriptの技術情報を中心に発信していきます。
+    </p>
+
+    <BlogList />
   </Container>
 </BaseLayout>
 
 <style lang="scss">
-  .text {
-    width: min(100%, 300px);
+  .top-text {
+    padding-bottom: 28px;
+    font-size: 16px;
+
+    @include mq(md) {
+      padding-bottom: 40px;
+    }
   }
 </style>

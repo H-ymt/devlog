@@ -1,0 +1,82 @@
+---
+import { getCollection } from 'astro:content'
+import FormattedDate from './FormattedDate.astro'
+
+const posts = (await getCollection('blog')).sort(
+  (a: { data: { pubDate: number } }, b: { data: { pubDate: number } }) =>
+    a.data.pubDate.valueOf() - b.data.pubDate.valueOf(),
+)
+---
+
+<ul class="list">
+  {
+    posts.slice(0, 6).map(
+      (post: {
+        slug: any
+        data: {
+          heroImage: string | null | undefined
+          title: unknown
+          pubDate: Date
+        }
+      }) => (
+        <li class="post">
+          <a
+            href={`/blog/${post.slug}/`}
+            class="post-link"
+          >
+            <img
+              width={720}
+              height={360}
+              src={post.data.heroImage}
+              alt=""
+              class="image"
+              transition:name={`blog-placeholder-${post.slug}`}
+            />
+            <h3 class="title">{post.data.title}</h3>
+            <p class="date">
+              <FormattedDate date={post.data.pubDate} />
+            </p>
+          </a>
+        </li>
+      ),
+    )
+  }
+</ul>
+
+<style lang="scss">
+  .list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    place-items: center;
+    justify-items: start;
+  }
+
+  .post {
+    display: grid;
+    grid-template-rows: subgrid;
+    row-gap: 12px;
+  }
+
+  .post-link {
+    text-decoration: none;
+  }
+
+  .image {
+    width: 100%;
+    aspect-ratio: 4 / 2.5;
+    object-fit: cover;
+    border-radius: var(--rounded-sm);
+  }
+
+  .title {
+    margin-top: 6px;
+    font-size: 16px;
+    color: var(--c-text-1);
+  }
+
+  .date {
+    font-size: 12px;
+    color: var(--c-text-2);
+  }
+</style>
