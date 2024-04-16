@@ -12,6 +12,35 @@ import BaseLayout from '@/layouts/BaseLayout.astro'
       />HTML/CSS/JavaScriptの技術情報を中心に発信していきます。
     </p>
 
+    <div class="space-container">
+      <div class="space-list">
+        <a
+          class="space-link"
+          href="/blog"
+          >Blog</a
+        >
+        <p>Webの技術記事を書き溜めるスペース</p>
+      </div>
+
+      <div class="space-list">
+        <a
+          class="space-link"
+          href="/note"
+          >Note</a
+        >
+        <p>役立つ知識を記録するスペース</p>
+      </div>
+
+      <div class="space-list">
+        <a
+          class="space-link"
+          href="/contact"
+          >Contact</a
+        >
+        <p>お問い合わせはこちらから</p>
+      </div>
+    </div>
+
     <BlogList limit={TOP_PAGE_LIMIT} />
   </Container>
 </BaseLayout>
@@ -20,9 +49,39 @@ import BaseLayout from '@/layouts/BaseLayout.astro'
   .top-text {
     padding-bottom: 28px;
     font-size: 16px;
+  }
 
-    @include mq(md) {
-      padding-bottom: 40px;
+  .space-container {
+    padding-bottom: 32px;
+    padding-left: 8px;
+  }
+
+  .space-list {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .space-link {
+    padding: 2px 4px;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--c-text-2);
+    text-decoration: underline;
+    text-decoration-color: var(--c-border);
+    border-radius: var(--rounded-sm);
+
+    @include hover {
+      color: var(--c-text-1);
+      background: var(--c-background-soft);
+      transition:
+        color 0.25s,
+        background 0.25s;
     }
+  }
+
+  .space-list p {
+    font-size: 14px;
+    color: var(--c-text-2);
   }
 </style>
