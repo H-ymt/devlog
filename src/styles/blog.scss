@@ -34,7 +34,11 @@ h2 {
 
 h3 {
   margin-block: 30px 10px;
-  font-size: 20px;
+  font-size: 18px;
+
+  @include mq(md) {
+    font-size: 20px;
+  }
 }
 
 h4 {
@@ -150,7 +154,6 @@ li {
     max-height: calc(100vh - 50px);
     padding: 20px;
     margin-top: 48px;
-    border: 1px solid var(--c-border);
     border-radius: var(--rounded);
   }
 }
@@ -178,17 +181,17 @@ li {
 }
 
 .table .h3 {
-  padding-top: 4px;
+  padding-top: 5px;
 }
 
 .h2 a {
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 300;
 }
 
 .h3 a {
   display: block;
-  padding-left: 8px;
+  padding-left: 10px;
   font-size: 14px;
   font-weight: 300;
 }

@@ -1,58 +1,41 @@
-function createTableOfContents() {
-  // 全てのhタグを取得
-  const headings = document.querySelectorAll('h2, h3, h4, h5, h6')
+function handleIntersection(entries, observer) {
+  entries.forEach((entry) => {
+    const heading = entry.target
+    const activeHeading = document.querySelector('.active')
 
-  // 目次を格納する要素
-  const tableOfContents = document.createElement('div')
-  tableOfContents.id = 'table-of-contents'
+    if (entry.isIntersecting) {
+      // 交差したhタグにactiveクラスを付与
+      heading.classList.add('active')
 
-  // 各hタグについて処理
-  headings.forEach((heading, index) => {
-    // hタグのidがない場合は自動生成
-    if (!heading.id) {
-      heading.id = `heading-${index}`
-    }
-
-    // リンクを作成
-    const link = document.createElement('a')
-    link.href = `#${heading.id}`
-    link.textContent = heading.textContent
-
-    // リストアイテムを作成
-    const listItem = document.createElement('li')
-    listItem.appendChild(link)
-
-    // 階層に応じてネストさせる
-    const headingLevel = parseInt(heading.tagName.charAt(1), 10)
-    let parent = tableOfContents
-    for (let i = 1; i < headingLevel; i++) {
-      const parentList = parent.lastElementChild
-      if (parentList && parentList.tagName === 'UL') {
-        parent = parentList
-      } else {
-        const newList = document.createElement('ul')
-        parent.appendChild(newList)
-        parent = newList
+      // 直前のactiveクラスを持つhタグからactiveクラスを削除
+      if (activeHeading && activeHeading !== heading) {
+        activeHeading.classList.remove('active')
       }
+    } else {
+      // 交差していないhタグからactiveクラスを削除
+      heading.classList.remove('active')
     }
-
-    // 新しいulを作成し、クラスを付与
-    const newList = document.createElement('ul')
-    if (heading.tagName === 'H2') {
-      newList.classList.add('h2')
-    } else if (heading.tagName === 'H3') {
-      newList.classList.add('h3')
-    }
-    newList.appendChild(listItem)
-    parent.appendChild(newList)
   })
-
-  // 目次を挿入する場所
-  const insertionPoint = document.querySelector('.table')
-
-  // 目次を挿入
-  insertionPoint.appendChild(tableOfContents)
 }
 
+function initializeIntersectionObserver() {
+  const options = {
+    rootMargin: '0px',
+    threshold: 0.5, // 50%以上交差した場合にコールバックが呼び出される
+  }
+
+  const headings = document.querySelectorAll('h2, h3, h4, h5, h6')
+  const observer = new IntersectionObserver(handleIntersection, options)
+
+  headings.forEach((heading) => {
+    observer.observe(heading)
+  })
+}
+
+// 目次の生成後にIntersection Observerを初期化
 createTableOfContents()
-document.addEventListener('astro:after-swap', createTableOfContents)
+initializeIntersectionObserver()
+document.addEventListener('astro:after-swap', () => {
+  createTableOfContents()
+  initializeIntersectionObserver()
+})
