@@ -42,7 +42,11 @@ import HeaderLink from './HeaderLink.astro'
 <style lang="scss">
   .header {
     z-index: 1;
-    padding: 60px 0;
+    padding: 40px 0;
+
+    @include mq(md) {
+      padding: 60px 0;
+    }
   }
 
   .header-inner {
