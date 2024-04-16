@@ -1,7 +1,8 @@
-import { defineConfig } from 'astro/config'
 import mdx from '@astrojs/mdx'
-import sitemap from '@astrojs/sitemap'
 import react from '@astrojs/react'
+import sitemap from '@astrojs/sitemap'
+import { defineConfig } from 'astro/config'
+import rlc from 'remark-link-card'
 
 // https://astro.build/config
 export default defineConfig({
@@ -11,6 +12,7 @@ export default defineConfig({
     shikiConfig: {
       theme: 'github-dark-dimmed',
     },
+    remarkPlugins: [rlc],
   },
   vite: {
     css: {

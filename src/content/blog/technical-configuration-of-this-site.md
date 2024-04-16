@@ -48,3 +48,4 @@ Tailwind CSSと迷いましたが、他のプロジェクトで使い回しで�
 - [@astrojs/sitemap](https://www.npmjs.com/package/@astrojs/sitemap)：簡単にサイトマップを生成してくれるAstro公式のインテグレーション。
 - [@cloudinary/url-gen](https://github.com/cloudinary/js-url-gen)：OGP画像生成に使用するライブララリ。
 - [Pagefind](https://pagefind.app/)：静的サイトに特化した全文検索ライブラリ。
+- [remark-link-card](https://github.com/gladevise/remark-link-card)：テキストリンクをリンクカードに変換するプラグイン。
