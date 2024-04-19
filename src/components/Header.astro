@@ -4,6 +4,7 @@ import { Image } from 'astro:assets'
 import Container from './Container.astro'
 import ExtraNavigation from './ExtraNavigation.astro'
 import HeaderLink from './HeaderLink.astro'
+import MenuMobile from './MenuMobile.astro'
 ---
 
 <header class="header">
@@ -36,13 +37,14 @@ import HeaderLink from './HeaderLink.astro'
         <ExtraNavigation />
       </div>
     </nav>
+    <MenuMobile />
   </Container>
 </header>
 
 <style lang="scss">
   .header {
     z-index: 1;
-    padding: 40px 0;
+    padding: 20px 0 40px;
 
     @include mq(md) {
       padding: 60px 0;
