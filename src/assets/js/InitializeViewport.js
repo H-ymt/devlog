@@ -1,18 +1,21 @@
-const debounce = (func, wait) => {
+const debounce = (func, wait, immediate = false) => {
   let timeout
-  return function executedFunction(...args) {
+  return (...args) => {
+    const context = this
     const later = () => {
       timeout = null
-      func(...args)
+      if (!immediate) func.apply(context, args)
     }
+    const callNow = immediate && !timeout
     clearTimeout(timeout)
     timeout = setTimeout(later, wait)
+    if (callNow) func.apply(context, args)
   }
 }
 
 const initializeViewport = () => {
-  const handleResize = () => {
-    const minWidth = 375
+  const minWidth = 375
+  const handleResize = function () {
     const value =
       window.outerWidth > minWidth
         ? 'width=device-width,initial-scale=1'
@@ -23,10 +26,10 @@ const initializeViewport = () => {
     }
   }
 
-  const debouncedResize = debounce(handleResize, 250)
+  const debouncedResize = debounce(handleResize, 250, true)
 
-  window.addEventListener('resize', debouncedResize, false)
-  handleResize()
+  window.addEventListener('resize', debouncedResize)
+  debouncedResize() // ページ読み込み時にも実行
 }
 
 export default initializeViewport
