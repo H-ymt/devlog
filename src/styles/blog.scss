@@ -4,6 +4,12 @@ pre {
   border-radius: var(--rounded);
 }
 
+p > code {
+  padding: 3px 5px;
+  background: var(--c-background-soft);
+  border-radius: var(--rounded-sm);
+}
+
 h1,
 h2,
 h3,
