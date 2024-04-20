@@ -1,6 +1,4 @@
 ---
-import Logo from '@/images/logo.png'
-import { Image } from 'astro:assets'
 import Container from './Container.astro'
 import ExtraNavigation from './ExtraNavigation.astro'
 import HeaderLink from './HeaderLink.astro'
@@ -12,16 +10,9 @@ import MenuMobile from './MenuMobile.astro'
     <a
       href="/"
       class="logo"
-      ><Image
-        src={Logo}
-        alt="logo"
-        width={32}
-        height={32}
-        format="webp"
-        loading="eager"
-        fetchpriority="high"
-      /></a
     >
+      <span class="logo"></span>
+    </a>
 
     <nav
       class="nav"
@@ -59,7 +50,10 @@ import MenuMobile from './MenuMobile.astro'
     margin-inline: auto;
   }
 
-  .logo img {
+  .logo {
+    width: 30px;
+    height: 30px;
+    background: #c9c9c9;
     border-radius: var(--rounded-full);
   }
 
