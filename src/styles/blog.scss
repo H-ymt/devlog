@@ -81,13 +81,17 @@ li {
   justify-content: flex-start;
   width: fit-content;
   padding: 7px;
-  margin-bottom: 56px;
+  margin-bottom: 40px;
   border-radius: 50%;
   transition: background 0.3s ease;
 
   @include hover {
     background: var(--c-background-soft);
     transition: background 0.3s ease;
+  }
+
+  @include mq(md) {
+    margin-bottom: 56px;
   }
 }
 
