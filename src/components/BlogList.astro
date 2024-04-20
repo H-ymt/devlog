@@ -66,10 +66,6 @@ const posts = (await getCollection('blog')).sort(
   }
 
   .post {
-    display: inline-grid;
-    grid-template-rows: subgrid;
-    row-gap: 12px;
-
     @include mq(md) {
       width: min(100%, 300px);
     }
