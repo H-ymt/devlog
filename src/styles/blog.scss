@@ -68,7 +68,8 @@ img {
 }
 
 .blog-content {
-  max-width: 100%;
+  width: min(750px, 100%);
+  margin-inline: auto;
 }
 
 .blog-content > ul,
