@@ -5,8 +5,8 @@ import FormattedDate from './FormattedDate.astro'
 const { limit } = Astro.props
 
 const posts = (await getCollection('blog')).sort(
-  (a: { data: { pubDate: number } }, b: { data: { pubDate: number } }) =>
-    a.data.pubDate.valueOf() - b.data.pubDate.valueOf(),
+  (a: { data: { pubDate: Date } }, b: { data: { pubDate: Date } }) =>
+    b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 )
 ---
 
