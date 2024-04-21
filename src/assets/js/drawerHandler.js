@@ -13,6 +13,10 @@ function setFocusableElements() {
   lastFocusableElement = focusableElements[focusableElements.length - 1]
 }
 
+function toggleOverflow(shouldHide) {
+  document.body.style.overflow = shouldHide ? 'hidden' : 'auto'
+}
+
 function drawerHandler() {
   isOpen = !isOpen
 
@@ -21,16 +25,21 @@ function drawerHandler() {
     button.setAttribute('aria-label', 'メニューを閉じる')
     drawer.classList.add('open', isOpen)
     button.setAttribute('aria-expanded', 'true')
-    document.body.style.overflow = 'hidden'
+    toggleOverflow(true)
     setFocusableElements()
     firstFocusableElement.focus()
   } else {
     button.classList.remove('open', isOpen)
     drawer.classList.remove('open', isOpen)
+    button.setAttribute('aria-label', 'メニューを開く')
     button.setAttribute('aria-expanded', 'false')
-    document.body.style.overflow = 'auto'
+    toggleOverflow(false)
   }
 }
+
+document.addEventListener('click', function (e) {
+  drawerHandler()
+})
 
 document.addEventListener('keydown', function (e) {
   if (e.key === 'Escape' && isOpen) {
@@ -51,7 +60,5 @@ document.addEventListener('keydown', function (e) {
     }
   }
 })
-
-button.addEventListener('click', drawerHandler)
 
 document.addEventListener('astro:after-swap', drawerHandler)
