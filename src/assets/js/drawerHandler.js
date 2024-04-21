@@ -57,4 +57,5 @@ const drawerHandler = () => {
   })
 }
 
+drawerHandler()
 document.addEventListener('astro:after-swap', drawerHandler)
