@@ -4,10 +4,12 @@ import sitemap from '@astrojs/sitemap'
 import { defineConfig } from 'astro/config'
 import rlc from 'remark-link-card'
 
+import expressiveCode from 'astro-expressive-code'
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://example.com',
-  integrations: [mdx(), sitemap(), react()],
+  integrations: [expressiveCode(), mdx(), sitemap(), react()],
   markdown: {
     shikiConfig: {
       theme: 'github-dark-dimmed',

@@ -28,7 +28,7 @@ https://zenn.dev/h_ymt/articles/69b9ee1b43b14d
 
 次のコードは本サイトのグローバルメニューの実装です。 `Astro.url`で現在のパスを取得し、現在のパスとaタグのhref属性が一致する場合に`isActive`クラスを付与し、さらにaria-currentの属性をpageに設定します。
 
-```astro
+```astro title="./src/components/HeaderLink.astro"
 ---
 import type { HTMLAttributes } from 'astro/types'
 
@@ -55,7 +55,7 @@ const currentPath = href === pathname || null
 さきほど作成したリンクコンポーネントをheaderコンポーネントに設置します。
 `<nav>`タグにはaria-label属性を付与してグローバルナビゲーションのnameを設定しておきます。
 
-```astro
+```astro title="./src/components/Header.astro"
 ---
 import HeaderLink from './HeaderLink.astro'
 ---
@@ -90,7 +90,7 @@ import HeaderLink from './HeaderLink.astro'
 
 グローバルナビゲーションと同様にぱんくずリストの現在のページにはaria-current="location"を付与しておきます。
 
-```astro
+```astro title="./src/components/Breadcrumbs.astro"
 ---
 interface BreadcrumbItem {
   label: string
