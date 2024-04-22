@@ -6,6 +6,7 @@ pre {
 
 p > code {
   padding: 3px 5px;
+  font-size: 14px;
   background: var(--c-background-soft);
   border-radius: var(--rounded-sm);
 }
@@ -152,7 +153,7 @@ li {
 
 .grid-layout {
   display: flex;
-  gap: 50px;
+  gap: 32px;
   justify-content: center;
 }
 

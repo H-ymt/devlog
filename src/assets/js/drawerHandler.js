@@ -1,5 +1,6 @@
+let isOpen = false
+
 const drawerHandler = () => {
-  let isOpen = false
   const button = document.querySelector('.js-toggleDrawer')
   const drawer = document.querySelector('.js-drawer')
   let focusableElements, firstFocusableElement, lastFocusableElement
@@ -17,7 +18,7 @@ const drawerHandler = () => {
   }
 
   button.addEventListener('click', function () {
-    isOpen = !isOpen
+    isOpen = !isOpen // ここでisOpenの値を更新
 
     if (isOpen) {
       button.classList.add('open', isOpen)
@@ -25,7 +26,6 @@ const drawerHandler = () => {
       drawer.classList.add('open', isOpen)
       button.setAttribute('aria-expanded', 'true')
       toggleOverflow(true)
-      setFocusableElements()
       firstFocusableElement.focus()
     } else {
       button.classList.remove('open', isOpen)
@@ -35,27 +35,27 @@ const drawerHandler = () => {
       toggleOverflow(false)
     }
   })
+}
 
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && isOpen) {
-      drawerHandler()
-    } else if (isOpen) {
-      if (e.key === 'Tab') {
-        if (e.shiftKey) {
-          if (document.activeElement === firstFocusableElement) {
-            e.preventDefault()
-            lastFocusableElement.focus()
-          }
-        } else {
-          if (document.activeElement === lastFocusableElement) {
-            e.preventDefault()
-            firstFocusableElement.focus()
-          }
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape' && isOpen) {
+    drawerHandler() // isOpenをここで参照
+  } else if (isOpen) {
+    if (e.key === 'Tab') {
+      if (e.shiftKey) {
+        if (document.activeElement === firstFocusableElement) {
+          e.preventDefault()
+          lastFocusableElement.focus()
+        }
+      } else {
+        if (document.activeElement === lastFocusableElement) {
+          e.preventDefault()
+          firstFocusableElement.focus()
         }
       }
     }
-  })
-}
+  }
+})
 
 drawerHandler()
 document.addEventListener('astro:after-swap', drawerHandler)

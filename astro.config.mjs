@@ -17,7 +17,7 @@ export default defineConfig({
     astroExpressiveCode({
       // Replace the default themes with a custom set of bundled themes:
       // "dracula" (a dark theme) and "solarized-light"
-      themes: ['dracula-soft'],
+      themes: ['github-dark'],
     }),
   ],
   markdown: {
