@@ -8,7 +8,7 @@ import expressiveCode, { astroExpressiveCode } from 'astro-expressive-code'
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://example.com',
+  site: 'https://devlog-xk2.pages.dev/',
   integrations: [
     expressiveCode(),
     mdx(),
