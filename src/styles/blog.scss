@@ -70,6 +70,7 @@ img {
 
 .blog-content {
   width: min(750px, 100%);
+  padding-inline: 20px;
   margin-inline: auto;
 }
 
@@ -153,7 +154,6 @@ li {
 
 .grid-layout {
   display: flex;
-  gap: 32px;
   justify-content: center;
 }
 
