@@ -69,8 +69,7 @@ img {
 }
 
 .blog-content {
-  width: min(750px, 100%);
-  padding-inline: 20px;
+  width: min(800px, 100%);
   margin-inline: auto;
 }
 
@@ -114,21 +113,18 @@ li {
   margin-inline: auto;
 }
 
-.hero-image {
+.hero {
   width: 100%;
+  width: min(100%, 800px);
+  margin-inline: auto;
 }
 
-.hero-image img {
+.hero img {
   display: block;
   aspect-ratio: 4 / 2;
-  margin-inline: auto;
   object-fit: cover;
   border-radius: var(--rounded-sm);
   box-shadow: var(--box-shadow);
-
-  @include mq(lg) {
-    width: min(100%, 800px);
-  }
 }
 
 .title {
@@ -154,7 +150,7 @@ li {
 
 .grid-layout {
   display: flex;
-  justify-content: center;
+  gap: 10px;
 }
 
 .table {
