@@ -1,35 +1,40 @@
-const debounce = (func, wait, immediate = false) => {
-  let timeout
+// ビューポートのサイズを取得する
+const viewportSize = () => {
+  const vw = window.innerWidth * 0.01
+  const vh = window.innerHeight * 0.01
+
+  document.documentElement.style.setProperty('--vw', `${vw}px`)
+  document.documentElement.style.setProperty('--vh', `${vh}px`)
+}
+
+// 375px以下のビューポートを固定
+const viewportFix = () => {
+  const viewport = document.querySelector('meta[name="viewport"]')
+  if (!viewport) return
+
+  const value =
+    window.outerWidth > 375 ? 'width=device-width,initial-scale=1' : 'width=375'
+  if (viewport.getAttribute('content') !== value)
+    viewport.setAttribute('content', value)
+}
+
+// debounce関数
+const debounce = (func, delay) => {
+  let timeoutId
   return (...args) => {
-    const context = this
-    const later = () => {
-      timeout = null
-      if (!immediate) func.apply(context, args)
-    }
-    const callNow = immediate && !timeout
-    clearTimeout(timeout)
-    timeout = setTimeout(later, wait)
-    if (callNow) func.apply(context, args)
+    clearTimeout(timeoutId)
+    timeoutId = setTimeout(() => {
+      func.apply(null, args)
+    }, delay)
   }
 }
 
-const initializeViewport = () => {
-  const minWidth = 375
-  const handleResize = function () {
-    const value =
-      window.outerWidth > minWidth
-        ? 'width=device-width,initial-scale=1'
-        : `width=${minWidth}`
-    const viewport = document.querySelector('meta[name="viewport"]')
-    if (viewport && viewport.getAttribute('content') !== value) {
-      viewport.setAttribute('content', value)
-    }
-  }
+const handleResize = debounce(() => {
+  viewportSize()
+  viewportFix()
+}, 250)
 
-  const debouncedResize = debounce(handleResize, 250, true)
-
-  window.addEventListener('resize', debouncedResize)
-  debouncedResize() // ページ読み込み時にも実行
+export default function initializeViewport() {
+  window.addEventListener('resize', handleResize)
+  handleResize() // 初期化時に実行
 }
-
-export default initializeViewport

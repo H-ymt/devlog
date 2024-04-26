@@ -106,13 +106,13 @@ const makeTitle = title ? `${title} - ${SITE_TITLE}` : `${SITE_TITLE}`
 <ViewTransitions fallback="swap" />
 
 <!-- Theme -->
-<script
-  src="@/js/themeInitialize.js"
-  is:inline
-></script>
+<script is:inline>
+  import '@/js/themeInitialize.js'
+</script>
 
 <!-- Initialize Viewport -->
-<script
-  src="@/assets/js/InitializeViewport.js"
-  is:inline
-></script>
+<script>
+  import initializeViewport from '@/js/initializeViewport.js'
+
+  initializeViewport()
+</script>
