@@ -34,7 +34,5 @@ const handleResize = debounce(() => {
   viewportFix()
 }, 250)
 
-export default function initializeViewport() {
-  window.addEventListener('resize', handleResize)
-  handleResize() // 初期化時に実行
-}
+window.addEventListener('resize', handleResize)
+handleResize() // 初期化時に実行
