@@ -5,7 +5,7 @@ pre {
 }
 
 p > code {
-  padding: 3px 5px;
+  padding: 3px 8px;
   font-size: 14px;
   background: var(--c-background-soft);
   border-radius: var(--rounded-sm);
@@ -61,7 +61,7 @@ h6 {
 p {
   margin-block: 20px 16px;
   line-height: 1.6;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.03em;
 }
 
 img {
@@ -69,7 +69,7 @@ img {
 }
 
 .blog-content {
-  width: min(800px, 100%);
+  width: min(700px, 100%);
   margin-inline: auto;
 }
 
@@ -150,7 +150,7 @@ li {
 
 .grid-layout {
   display: flex;
-  gap: 10px;
+  gap: 24px;
 }
 
 .table {
@@ -160,11 +160,11 @@ li {
     position: sticky;
     top: 24px;
     display: block;
-    width: min(260px, 100%);
-    min-width: 260px;
+    width: min(240px, 100%);
+    min-width: 240px;
     height: fit-content;
     max-height: calc(100vh - 50px);
-    padding: 20px;
+    padding-top: 20px;
     margin-top: 48px;
     border-radius: var(--rounded);
   }
