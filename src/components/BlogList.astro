@@ -17,7 +17,7 @@ const posts = (await getCollection('blog')).sort(
         slug: string
         data: {
           heroImage: string | null | undefined
-          title: unknown
+          title: string
           pubDate: Date
           tags: string
         }
@@ -30,7 +30,7 @@ const posts = (await getCollection('blog')).sort(
             <img
               width={720}
               height={360}
-              src={post.data.heroImage}
+              src={`/og/${post.slug}.png`}
               alt=""
               class="image"
               transition:name={`blog-placeholder-${post.slug}`}

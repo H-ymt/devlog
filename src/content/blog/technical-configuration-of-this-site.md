@@ -6,7 +6,6 @@ tags:
   - html
   - css
   - javascript
-heroImage: '/blog-placeholder-3.jpg'
 ---
 
 ## 選定の方針

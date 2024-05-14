@@ -27,11 +27,20 @@ export default defineConfig({
     remarkPlugins: [rlc],
   },
   vite: {
+    optimizeDeps: { exclude: ['@resvg/resvg-js'] },
     css: {
       preprocessorOptions: {
         scss: {
           additionalData: '@use "src/styles/_variables.scss" as *;',
         },
+      },
+    },
+  },
+  image: {
+    service: {
+      entrypoint: 'astro/assets/services/sharp',
+      config: {
+        limitInputPixels: false,
       },
     },
   },
