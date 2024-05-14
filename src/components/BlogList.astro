@@ -58,11 +58,13 @@ const posts = (await getCollection('blog')).sort(
 <style lang="scss">
   .list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 24px;
+    gap: 32px 24px;
     place-items: center;
     justify-items: start;
-    width: min(100%, 700px);
+
+    @include mq(md) {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
   .post {
@@ -70,10 +72,6 @@ const posts = (await getCollection('blog')).sort(
     grid-template-rows: subgrid;
     grid-row: span 4;
     align-items: start;
-
-    @include mq(md) {
-      width: min(100%, 300px);
-    }
   }
 
   .post-link {
