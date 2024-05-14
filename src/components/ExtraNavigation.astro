@@ -17,7 +17,6 @@ import ThemeToggle from './ThemeToggle.astro'
         cx="6"
         cy="12"
         r="1"
-        stroke="var(--c-text-1)"
         stroke-width="1.5"
         stroke-linecap="round"
         stroke-linejoin="round"
@@ -25,7 +24,6 @@ import ThemeToggle from './ThemeToggle.astro'
         cx="12"
         cy="12"
         r="1"
-        stroke="var(--c-text-1)"
         stroke-width="1.5"
         stroke-linecap="round"
         stroke-linejoin="round"
@@ -33,7 +31,6 @@ import ThemeToggle from './ThemeToggle.astro'
         cx="18"
         cy="12"
         r="1"
-        stroke="var(--c-text-1)"
         stroke-width="1.5"
         stroke-linecap="round"
         stroke-linejoin="round"
@@ -100,6 +97,13 @@ import ThemeToggle from './ThemeToggle.astro'
     padding-inline: 12px;
     background: transparent;
     border: none;
+    stroke: var(--c-text-3);
+    transition: stroke 0.25s ease;
+
+    @include hover {
+      stroke: var(--c-text-1);
+      transition: stroke 0.25s ease;
+    }
   }
 
   .dialog {
