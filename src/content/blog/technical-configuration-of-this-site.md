@@ -15,12 +15,11 @@ tags:
 
 ## 主な機能
 
-サイトにいれたかった機能は次のとおりです。とりあえずリリースしたかったので、ブログ詳細ページの動的OGP生成、全文検索と多言語化対応（といっても英語だけ）は、後回しにしました。時間があるときに実装しようと思っています。
+サイトにいれたかった機能は次のとおりです。とりあえずリリースしたかったので、お問い合わせフォーム、~~ブログ詳細ページの動的OGP生成、~~ 全文検索は、後回しにしました。時間があるときに実装しようと思います。
 
 - マークダウン
 - ダークモード
 - お問い合わせフォーム
-- 全文検索機能
 - 動的OGP画像生成
 - View Transitions API
 
@@ -45,6 +44,8 @@ Tailwind CSSと迷いましたが、他のプロジェクトで使い回しで�
 
 - [astro-google-fonts-optimizer](https://github.com/sebholstein/astro-google-fonts-optimizer)：googleフォントを最適化してくれるライブラリ。Next.jsのフォント最適化にインスパイアされて作られたみたいです。
 - [@astrojs/sitemap](https://www.npmjs.com/package/@astrojs/sitemap)：簡単にサイトマップを生成してくれるAstro公式のインテグレーション。
-- [@cloudinary/url-gen](https://github.com/cloudinary/js-url-gen)：OGP画像生成に使用するライブララリ。
+- [satori](https://github.com/vercel/satori)；HTML/CSSからSVG画像を生成するVercel社がリリースしたJavaScriptライブラリ。
+- [@resvg/resvg-js](https://github.com/yisibl/resvg-js)：satoriで生成したSVGをPNGに変換するライブラリ。
 - [Pagefind](https://pagefind.app/)：静的サイトに特化した全文検索ライブラリ。
 - [remark-link-card](https://github.com/gladevise/remark-link-card)：テキストリンクをリンクカードに変換するプラグイン。
+- [astro-expressive-code](https://expressive-code.com/)：コードブロックにファイル名の表示やコピーボタンを追加することができるプラグイン。
