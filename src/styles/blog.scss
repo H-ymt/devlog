@@ -41,7 +41,7 @@ h2 {
 
 h3 {
   margin-block: 30px 10px;
-  font-size: 18px;
+  font-size: 17px;
 
   @include mq(md) {
     font-size: 20px;
@@ -62,6 +62,11 @@ p {
   margin-block: 20px 16px;
   line-height: 1.6;
   letter-spacing: 0.03em;
+}
+
+p,
+ul {
+  font-size: 15px;
 }
 
 img {
