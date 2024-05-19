@@ -1,137 +1,113 @@
-<div class="toggle-container">
+<button
+  type="button"
+  role="switch"
+  data-state="light"
+  class="switch js-themeToggle"
+  aria-label="テーマを変更する"
+>
   <span
-    id="theme-toggle-label"
-    class="sr-only"
-    >テーマを変更する</span
+    data-state="light"
+    class="switch-label"
   >
-  <label
-    class="toggle-switch"
-    aria-labelledby="theme-toggle-label"
-  >
-    <input
-      type="checkbox"
-      class="js-themeToggle"
-      tabindex="0"
-      aria-checked="false"
-      role="switch"
-      aria-labelledby="theme-toggle-label"
-    />
     <span
-      class="slider"
+      class="theme-icon"
       aria-hidden="true"
     >
       <svg
+        xmlns="http://www.w3.org/2000/svg"
         width="12"
         height="12"
         viewBox="0 0 24 24"
         fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        class="theme-icon sun"
-        ><path
-          d="M17.5 17.5L19 19M20 12H22M6.5 6.5L5 5M17.5 6.5L19 5M6.5 17.5L5 19M2 12H4M12 2V4M12 20V22M16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+        stroke="var(--c-text-3)"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-sun sun"
+        ><circle
+          cx="12"
+          cy="12"
+          r="4"
+        ></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path
+          d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"
+        ></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path
+          d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"
         ></path></svg
       >
       <svg
-        width="10"
-        height="10"
+        xmlns="http://www.w3.org/2000/svg"
+        width="12"
+        height="12"
         viewBox="0 0 24 24"
         fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        class="theme-icon moon"
-        ><path
-          d="M9.3812 2.04327C7.76937 2.50154 6.2485 3.36519 4.97948 4.63421C1.00684 8.60687 1.00684 15.0478 4.97948 19.0205C8.95213 22.9932 15.3931 22.9932 19.3657 19.0205C20.6429 17.7433 21.5095 16.211 21.9654 14.5876M9.5384 2C8.6321 5.39377 9.51018 9.16492 12.1726 11.8274C14.8351 14.4899 18.6063 15.368 22 14.4617"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        ></path></svg
+        stroke="var(--c-text-3)"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-moon moon"
+        ><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg
       >
     </span>
-  </label>
-</div>
+  </span>
+</button>
 
 <style lang="scss">
-  .toggle-container {
-    display: flex;
-    align-items: center;
-  }
-
-  /* トグルスイッチの基本スタイル */
-  .toggle-switch {
+  .switch {
     position: relative;
-    display: inline-block;
-    width: 40px;
-    height: 22px;
+    display: inline-flex;
+    justify-items: center;
+    width: 44px;
+    height: 24px;
+    padding: 0;
+    background: var(--c-input);
+    border: 2px solid transparent;
+    border-radius: var(--rounded-lg);
   }
 
-  /* 実際のチェックボックスは非表示 */
-  .toggle-switch input {
-    width: 0;
-    height: 0;
-    opacity: 0;
+  .switch:focus-visible {
+    outline-color: var(--c-primary);
+    outline-offset: 2px;
   }
 
-  /* スライダー */
-  .slider {
+  .switch.is-dark {
+    background: var(--c-input);
+  }
+
+  .switch-label {
     position: absolute;
-    inset: 0;
-    z-index: 0;
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    cursor: pointer;
-    background-color: var(--c-background-soft);
-    border-radius: 34px;
-    transition: 0.4s;
-  }
-
-  .slider::before {
-    position: absolute;
-    bottom: 1px;
-    left: 1px;
+    justify-content: center;
     width: 20px;
     height: 20px;
-    content: '';
-    background-color: var(--c-background);
-    border: 1px solid var(--c-border);
-    border-radius: 50%;
-    transition: 0.4s;
+    background: var(--c-background);
+    border-radius: var(--rounded-full);
+    box-shadow: 0 2px 4px 0 var(--c-shadow);
+    transition: transform 0.2s;
+    transform: translateX(0);
+  }
+
+  .switch-label:where(.switch.is-dark *) {
+    transform: translateX(20px);
   }
 
   .theme-icon {
-    position: absolute;
-    stroke: var(--c-text-1);
+    position: relative;
+    z-index: 99;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
   }
 
-  .theme-icon.sun {
-    left: 5px;
-  }
-
-  .theme-icon.moon {
-    right: 5px;
-    display: block;
-  }
-
-  .theme-icon.sun:where(.toggle-switch input.is-dark + .slider *) {
+  .theme-icon .sun:where(.switch.is-dark *),
+  .theme-icon .moon {
     display: none;
   }
 
-  .theme-icon.moon:where(.toggle-switch input + .slider *) {
-    display: none;
-  }
-
-  .theme-icon.moon:where(.toggle-switch input.is-dark + .slider *) {
+  .theme-icon .moon:where(.switch.is-dark *) {
     display: block;
-  }
-
-  /* チェックボックスがチェックされた時の状態 */
-  .toggle-switch input.is-dark + .slider {
-    background-color: var(--c-background-soft);
-  }
-
-  .toggle-switch input.is-dark + .slider::before {
-    transform: translateX(18.5px);
   }
 </style>
 
