@@ -4,11 +4,8 @@ pre {
   border-radius: var(--rounded);
 }
 
-p > code {
-  padding: 3px 8px;
-  font-size: 14px;
-  background: var(--c-background-soft);
-  border-radius: var(--rounded-sm);
+.expressive-code {
+  margin-top: 20px;
 }
 
 h1,
