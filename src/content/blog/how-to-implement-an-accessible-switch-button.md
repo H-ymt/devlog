@@ -86,7 +86,48 @@ switchボタンの満たすべき要件としては以下のとおりです。
 
 ## JavaScriptの実装例
 
-ボタンをクリックした時に、JavaScriptで`data-state`属性と`aria-checked`の値を切り替えてあげれば実装完了です。
+ボタンをクリックした時に、JavaScriptで`data-state`属性と`aria-checked`の値を切り替える処理を追加します。
+
+```js
+const button = document.querySelector('.js-switchButton')
+const label = document.querySelector('.js-switchLabel')
+
+const switchHandler = () => {
+  const isChecked = button.getAttribute('data-state') === 'checked'
+
+  const newState = isChecked ? 'unchecked' : 'checked'
+
+  const ariaChecked = isChecked ? 'false' : 'true'
+
+  button.setAttribute('data-state', newState)
+  button.setAttribute('aria-checked', ariaChecked)
+
+  label.setAttribute('data-state', newState)
+}
+
+button.addEventListener('click', switchHandler)
+```
+
+`button`の現在の状態（ `checked`か`unchecked`）を判定し、`data-state`属性と`aria-checked`の値を切り替える関数を準備します。
+
+```js
+const isChecked = button.getAttribute('data-state') === 'checked'
+const newState = isChecked ? 'unchecked' : 'checked'
+const ariaChecked = isChecked ? 'false' : 'true'
+```
+
+次の処理で`button`の`data-state`属性と`aria-checked`属性を更新しています。
+
+```js
+// ボタンの data-state 属性と aria-checked 属性を更新
+button.setAttribute('data-state', newState)
+button.setAttribute('aria-checked', ariaChecked)
+
+// ラベルの data-state 属性を更新
+label.setAttribute('data-state', newState)
+```
+
+下記がコメントで解説を入れたJavaScriptのコードです。
 
 ```js
 // ボタンとラベルの要素を取得
