@@ -108,7 +108,7 @@ const switchHandler = () => {
 button.addEventListener('click', switchHandler)
 ```
 
-`button`の現在の状態（ `checked`か`unchecked`）を判定し、`data-state`属性と`aria-checked`の値を切り替える関数を準備します。
+関数の中身について少し解説すると、`button`の現在の状態（ `checked`か`unchecked`）を判定し、`data-state`属性と`aria-checked`の値を切り替える関数を準備します。
 
 ```js
 const isChecked = button.getAttribute('data-state') === 'checked'
