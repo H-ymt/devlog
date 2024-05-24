@@ -33,6 +33,8 @@ const posts = (await getCollection('blog')).sort(
               src={`/og/${post.slug}.png`}
               alt=""
               class="image"
+              loading="eager"
+              fetchpriority="high"
               transition:name={`blog-placeholder-${post.slug}`}
             />
             <h3 class="title">{post.data.title}</h3>
