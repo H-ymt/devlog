@@ -162,6 +162,6 @@ const switchHandler = () => {
 button.addEventListener('click', switchHandler)
 ```
 
-## Referrence
+## Reference
 
 https://developer.mozilla.org/ja/docs/Web/Accessibility/ARIA/Roles/switch_role
