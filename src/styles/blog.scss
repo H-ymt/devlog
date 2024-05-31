@@ -4,6 +4,12 @@ pre {
   border-radius: var(--rounded);
 }
 
+code {
+  padding: 3px 6px;
+  background: var(--c-background-soft);
+  border-radius: var(--rounded-sm);
+}
+
 .expressive-code {
   margin-top: 20px;
 }
