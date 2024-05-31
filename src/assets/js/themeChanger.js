@@ -18,10 +18,12 @@ function themeToggle() {
   themeToggleButton.addEventListener('click', () => {
     const currentTheme = htmlElement.classList.contains('dark') ? 'dark' : 'light'
     const newTheme = currentTheme === 'light' ? 'dark' : 'light'
+    const ariaChecked = newTheme === 'light' ? 'false' : 'true'
 
     // テーマを切り替える
     htmlElement.classList.toggle('dark')
     themeToggleButton.classList.toggle('is-dark')
+    themeToggleButton.setAttribute('aria-checked', ariaChecked)
 
     // ローカルストレージにテーマを保存する
     localStorage.setItem('theme', newTheme)

@@ -13,6 +13,7 @@ tags:
 switchボタンの満たすべき要件としては以下のとおりです。
 
 - キーボードでアクセス可能
+- スクリーンリーダーでスイッチのオンとオフを識別できる
 - クリック、Spaceキー、Enterキー（任意）でスイッチの値を切り替えることができる
 
 ## HTMLの実装例
@@ -21,10 +22,14 @@ switchボタンの満たすべき要件としては以下のとおりです。
 
 また、`switch`ロールには`aria-checked`属性が必須のため、初期のオフ状態である`false`を設定しておき、スイッチがトグルされた時にJavaScriptで属性の値を入れ替えます。
 
+例のように`<label>`要素で何のスイッチかを明確にしておくのがベストですが、要件でそれができない場合は、`<button>`に`aria-label`属性を設定するか、`<span>`タグでスクリーンリーダー用のテキストを用意しておきます。
+
 カスタムデータ属性でスタイルをあてるため、初期状態は`date-state`属性を`unchecked`にしておきます。
 
 ```html
+<label for="switch">mode</label>
 <button
+  id="switch"
   type="button"
   role="switch"
   data-state="unchecked"
