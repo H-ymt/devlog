@@ -1,0 +1,59 @@
+---
+import { getCollection } from 'astro:content'
+import FormattedDate from '../formatted-date/index.astro'
+import styles from './index.module.scss'
+
+const { limit } = Astro.props
+
+const posts = (await getCollection('blog')).sort(
+  (a: { data: { pubDate: Date } }, b: { data: { pubDate: Date } }) =>
+    b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+)
+---
+
+<ul class={styles.list}>
+  {
+    posts.slice(0, limit).map(
+      (post: {
+        slug: string
+        data: {
+          heroImage: string | null | undefined
+          title: string
+          pubDate: Date
+          tags: string
+        }
+      }) => (
+        <li class={styles.post}>
+          <a
+            href={`/blog/${post.slug}/`}
+            class={styles.postLink}
+          >
+            <img
+              width={720}
+              height={360}
+              src={`/og/${post.slug}.png`}
+              alt=""
+              class={styles.thumbnail}
+              loading="eager"
+              fetchpriority="high"
+              transition:name={`blog-placeholder-${post.slug}`}
+            />
+            <h3 class={styles.title}>{post.data.title}</h3>
+            <p class={styles.date}>
+              <FormattedDate date={post.data.pubDate} />
+            </p>
+            <ul class={styles.tagList}>
+              {Array.isArray(post.data.tags) &&
+                post.data.tags.map((tag) => (
+                  <li class={styles.tag}>
+                    <span aria-hidden="true">#</span>
+                    {tag}
+                  </li>
+                ))}
+            </ul>
+          </a>
+        </li>
+      ),
+    )
+  }
+</ul>

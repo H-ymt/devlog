@@ -1,0 +1,48 @@
+.header {
+  z-index: 1;
+  padding: 20px 0 40px;
+
+  @include mq(md) {
+    padding: 48px 0 60px;
+  }
+}
+
+.headerInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: var(--container-width);
+  margin-inline: auto;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #151515;
+  text-decoration: none;
+  background: #14b8a6;
+  border-radius: var(--rounded-full);
+}
+
+.nav {
+  display: none;
+
+  @include mq(md) {
+    display: block;
+  }
+}
+
+.links {
+  display: flex;
+  align-items: center;
+}
+
+.internalLinks {
+  display: flex;
+  align-items: center;
+}

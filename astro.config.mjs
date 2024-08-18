@@ -6,7 +6,6 @@ import rlc from 'remark-link-card'
 
 import expressiveCode, { astroExpressiveCode } from 'astro-expressive-code'
 
-// https://astro.build/config
 export default defineConfig({
   site: 'https://devlog-xk2.pages.dev/',
   integrations: [
@@ -15,8 +14,6 @@ export default defineConfig({
     sitemap(),
     react(),
     astroExpressiveCode({
-      // Replace the default themes with a custom set of bundled themes:
-      // "dracula" (a dark theme) and "solarized-light"
       themes: ['github-dark'],
     }),
   ],
@@ -31,7 +28,7 @@ export default defineConfig({
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: '@use "src/styles/_variables.scss" as *;',
+          additionalData: '@use "src/styles/variables.scss" as *;',
         },
       },
     },

@@ -6,7 +6,7 @@ module.exports = {
       options: { parser: 'astro' },
     },
   ],
-  printWidth: 85,
+  printWidth: 95,
   tabWidth: 2,
   singleQuote: true,
   semi: false,

@@ -1,6 +1,6 @@
 import { Resvg } from '@resvg/resvg-js'
 import satori from 'satori'
-import { SITE_TITLE } from '../consts'
+import { SITE_TITLE } from '../../consts'
 
 const siteDomainName = 'evlog-xk2.pages.dev'
 const fontFamily = 'Zen Kaku Gothic New'
@@ -19,7 +19,7 @@ export async function getOgImage(text: string) {
         height: '100%',
         width: '100%',
         backgroundImage:
-          'linear-gradient(to right top, #949aa3, #90959c, #8c9094, #888a8d, #848586)',
+          'linear-gradient(to right bottom, #39C9B9, #62C9BD, #84D1CC)',
         padding: '32px 40px',
         fontFamily: `"${fontFamily}", sans-serif`,
       }}
@@ -33,8 +33,8 @@ export async function getOgImage(text: string) {
           rowGap: '24px',
           height: '100%',
           width: '100%',
-          backgroundColor: 'rgb(255, 255, 255, 0.1)',
-          boxShadow: '0 4px 30px rgb(0, 0, 0, 0.3)',
+          backgroundColor: 'rgba(255, 255, 255, 0.1)',
+          boxShadow: '0 4px 30px rgb(0, 0, 0, 0.2)',
           backdropFilter: 'blur(8px)',
           borderRadius: '10px',
           border: '1px solid rgba(255, 255, 255, 0.3)',
@@ -61,6 +61,7 @@ export async function getOgImage(text: string) {
             width: '100%',
             color: '#ffff',
             fontSize: '28px',
+            fontWeight: 700,
           }}
         >
           <span>{SITE_TITLE}</span>

@@ -12,10 +12,8 @@ const viewportFix = () => {
   const viewport = document.querySelector('meta[name="viewport"]')
   if (!viewport) return
 
-  const value =
-    window.outerWidth > 375 ? 'width=device-width,initial-scale=1' : 'width=375'
-  if (viewport.getAttribute('content') !== value)
-    viewport.setAttribute('content', value)
+  const value = window.outerWidth > 375 ? 'width=device-width,initial-scale=1' : 'width=375'
+  if (viewport.getAttribute('content') !== value) viewport.setAttribute('content', value)
 }
 
 // debounce関数
@@ -35,4 +33,4 @@ const handleResize = debounce(() => {
 }, 250)
 
 window.addEventListener('resize', handleResize)
-handleResize() // 初期化時に実行
+handleResize()

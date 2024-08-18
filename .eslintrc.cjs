@@ -8,12 +8,12 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
-    project: './tsconfig.json',
   },
   overrides: [
     {
       files: ['*.ts'],
       parser: '@typescript-eslint/parser',
+      project: './tsconfig.json',
     },
     {
       files: ['*.astro'],

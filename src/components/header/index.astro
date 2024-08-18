@@ -1,0 +1,32 @@
+---
+import Container from '../container/index.astro'
+import ExtraNavigation from '../extra-navigation/index.astro'
+import HeaderLink from '../header-link/index.astro'
+import MenuMobile from '../menu-mobile/index.astro'
+import styles from './index.module.scss'
+---
+
+<header class={styles.header}>
+  <Container class={styles.headerInner}>
+    <a
+      href="/"
+      class={styles.logo}
+    >
+    </a>
+
+    <nav
+      class={styles.nav}
+      aria-label="グローバルナビゲーション"
+    >
+      <div class={styles.links}>
+        <div class={styles.internalLinks}>
+          <HeaderLink href="/">HOME</HeaderLink>
+          <HeaderLink href="/blog/">BLOG</HeaderLink>
+          <HeaderLink href="/note/">NOTE</HeaderLink>
+        </div>
+        <ExtraNavigation />
+      </div>
+    </nav>
+    <MenuMobile />
+  </Container>
+</header>

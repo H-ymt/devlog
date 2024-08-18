@@ -3,9 +3,7 @@ title: 'Astroで制作した本サイトの技術構成'
 description: 'Astroで制作した本サイトの技術構成を紹介します。'
 pubDate: 'Apr 15 2024'
 tags:
-  - html
-  - css
-  - javascript
+  - Architecture
 ---
 
 ## 選定の方針
