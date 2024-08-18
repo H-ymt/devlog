@@ -1,0 +1,56 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import { getCollection } from 'astro:content'
+
+type Params = {
+  tag: string
+}
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog')
+
+  const tags = Array.from(
+    new Set(posts.flatMap((post) => post.data.tags.map((tag) => tag.toLowerCase()))),
+  )
+
+  return tags.map((tag) => ({
+    params: { tag },
+  }))
+}
+
+const { tag } = Astro.params as Params
+const allPosts = await getCollection('blog')
+
+let originalTag: string | undefined
+
+const filteredPosts = allPosts.filter((post) =>
+  post.data.tags.some((postTag) => {
+    if (postTag.toLowerCase() === tag.toLowerCase()) {
+      originalTag = postTag
+      return true
+    }
+    return false
+  }),
+)
+
+if (filteredPosts.length === 0) {
+  throw new Error(`No posts found for tag: ${tag}`)
+}
+---
+
+<BaseLayout>
+  <h1>Posts tagged with "{originalTag || tag}"</h1>
+
+  <ul>
+    {
+      filteredPosts.map((post) => (
+        <li>
+          <a href={`/blog/${post.slug}/`}>
+            <h3>{post.data.title}</h3>
+            <p>{post.data.pubDate.toDateString()}</p>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</BaseLayout>

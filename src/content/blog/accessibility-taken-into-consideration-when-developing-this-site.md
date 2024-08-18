@@ -1,11 +1,11 @@
 ---
-title: '本サイトのアクセシビリティ対応について'
+title: 'このサイトを制作する際に意識したアクセシビリティ対応'
 description: 'このサイトを制作するときに行なったアクセシビリティ対応を紹介します。'
 pubDate: 'Apr 19 2024'
 tags:
-  - html
-  - css
-  - javascript
+  - HTML
+  - CSS
+  - JavaScript
 ---
 
 ## ハンバーガーメニュー

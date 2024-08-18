@@ -1,11 +1,11 @@
 ---
-title: 'アクセシブルなswitchボタンの実装方法'
+title: 'アクセシブルなSwitchボタンの実装方法'
 description: 'アクセシビリティに配慮したSwitchボタンのマークアップの実装例を紹介'
 pubDate: 'May 22 2024'
 tags:
-  - html
-  - css
-  - javascript
+  - HTML
+  - CSS
+  - JavaScript
 ---
 
 ## 満たすべき要件

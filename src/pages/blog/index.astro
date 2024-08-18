@@ -1,7 +1,7 @@
 ---
-import BlogList from '@/components/BlogList.astro'
-import Breadcrumbs from '@/components/Breadcrumbs.astro'
-import Container from '@/components/Container.astro'
+import BlogList from '@/components/blog-list/index.astro'
+import Breadcrumbs from '@/components/breadcrumbs/index.astro'
+import Container from '@/components/container/index.astro'
 import { BLOG_PAGE_LIMIT } from '@/consts'
 import BaseLayout from '@/layouts/BaseLayout.astro'
 ---
@@ -40,7 +40,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro'
 
   .title {
     margin-top: 6px;
-    font-size: 14px;
+    font-size: 0.875rem;
     color: var(--c-text-1);
   }
 
@@ -58,13 +58,13 @@ import BaseLayout from '@/layouts/BaseLayout.astro'
 
   .tag {
     display: flex;
-    gap: 1px;
+    gap: 0.1em;
     align-items: center;
-    padding: 4px 14px;
-    font-size: 10px;
+    padding: 0.1em 1.4em;
+    font-size: 0.75rem;
     color: var(--c-text-3);
     background: transparent;
-    border: 1px solid var(--c-border);
+    border: 0.1em solid var(--c-border);
     border-radius: var(--rounded-full);
 
     @include hover {

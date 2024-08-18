@@ -1,10 +1,10 @@
 function navDialogHandlers() {
-  const dialogOverlay = document.querySelector('.js-dialogOverlay')
-  const dialogToggle = document.querySelector('.js-dialogToggle')
-  const dialog = document.querySelector('.js-dialog')
+  const dialogOverlay = document.querySelector('[data-js="dialogOverlay"]')
+  const dialogToggle = document.querySelector('[data-js="dialogToggle"]')
+  const dialog = document.querySelector('[data-js="dialog"]')
 
-  dialogOverlay.addEventListener('click', toggleDialog)
-  dialogToggle.addEventListener('click', toggleDialog)
+  dialogOverlay?.addEventListener('click', toggleDialog)
+  dialogToggle?.addEventListener('click', toggleDialog)
 
   let isOpen = false
 
@@ -12,7 +12,7 @@ function navDialogHandlers() {
     isOpen = !isOpen
     const method = isOpen ? 'show' : 'close'
     dialog[method]()
-    dialogOverlay.classList.toggle('open', isOpen)
+    dialogOverlay?.classList.toggle('open', isOpen)
   }
 
   document.addEventListener('keydown', function (e) {

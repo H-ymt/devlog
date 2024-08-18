@@ -1,4 +1,6 @@
 ---
+import styles from './index.module.scss'
+
 interface BreadcrumbItem {
   label: string
   path?: string
@@ -22,11 +24,11 @@ export async function getBreadcrumbs(path: string): Promise<BreadcrumbItem[]> {
 ---
 
 <nav>
-  <ul class="breadcrumbs">
-    <li class="homepath">
+  <ul class={styles.breadcrumbs}>
+    <li class={styles.homepath}>
       <a
         href="/"
-        class="homepath-link"
+        class={styles.homepathLink}
         aria-current={Astro.url.pathname === '/' ? 'location' : null}
       >
         <svg
@@ -49,7 +51,7 @@ export async function getBreadcrumbs(path: string): Promise<BreadcrumbItem[]> {
     </li>
     {
       (await getBreadcrumbs(Astro.url.pathname)).map((crumb) => (
-        <li class="subpath">
+        <li class={styles.subpath}>
           {crumb.path ? (
             <a
               href={crumb.path}
@@ -65,47 +67,3 @@ export async function getBreadcrumbs(path: string): Promise<BreadcrumbItem[]> {
     }
   </ul>
 </nav>
-
-<style>
-  .breadcrumbs {
-    display: flex;
-    align-items: center;
-    padding: 0;
-    padding-bottom: 24px;
-    margin: 0;
-    word-break: break-all;
-  }
-
-  .breadcrumbs a {
-    font-size: 14px;
-    color: var(--c-text-1);
-    transition: color 0.3s;
-  }
-
-  :where(.homepath, .subpath) {
-    width: fit-content;
-    list-style-type: none;
-  }
-
-  .homepath {
-    display: inline-flex;
-    align-items: center;
-  }
-
-  .homepath-link {
-    display: inline-flex;
-    align-items: center;
-  }
-
-  .subpath {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
-  .subpath::before {
-    margin-inline: 12px 6px;
-    font-size: 14px;
-    content: '>';
-  }
-</style>

@@ -1,0 +1,30 @@
+---
+import styles from './index.module.scss'
+
+const files = await Astro.glob('../../content/blog/**/*.md')
+const frontmatter = files.map((file) => file.frontmatter)
+const tagCount = frontmatter.reduce((acc, { tags }) => {
+  tags.forEach((tag) => {
+    acc[tag] = (acc[tag] || 0) + 1
+  })
+  return acc
+}, {})
+---
+
+<div class={styles.wrapper}>
+  <p class={styles.title}>タグから探す</p>
+  <ul class={styles.list}>
+    {
+      Object.entries(tagCount).map(([tag, count]) => (
+        <li class={styles.item}>
+          <a
+            class={styles.link}
+            href={`/tags/${tag.toLowerCase()}`}
+          >
+            {tag} ({count})
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>

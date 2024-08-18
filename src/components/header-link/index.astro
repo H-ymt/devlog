@@ -1,0 +1,24 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import clsx from 'clsx'
+import styles from './index.module.scss'
+
+type Props = HTMLAttributes<'a'>
+
+const { href = '', class: className, ...props } = Astro.props
+const { pathname } = Astro.url
+
+console.log('href:', href)
+console.log('pathname:', pathname)
+
+const isActive = href ? new URL(href, Astro.site).pathname === pathname : false
+---
+
+<a
+  href={href}
+  aria-current={isActive ? 'page' : null}
+  class={clsx(styles.headerLink, isActive && styles.isActive)}
+  {...props}
+>
+  <slot />
+</a>

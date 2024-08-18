@@ -1,5 +1,5 @@
 function themeToggle() {
-  const themeToggleButton = document.querySelector('.js-themeToggle')
+  const themeToggleButton = document.querySelector('[data-js="themeToggle"]')
   const htmlElement = document.documentElement
 
   // ローカルストレージからテーマを取得する
@@ -8,10 +8,10 @@ function themeToggle() {
   // テーマを適用する
   if (savedTheme === 'dark') {
     htmlElement.classList.add('dark')
-    themeToggleButton.classList.add('is-dark')
+    themeToggleButton.setAttribute('data-theme', 'dark')
   } else {
     htmlElement.classList.remove('dark')
-    themeToggleButton.classList.remove('is-dark')
+    themeToggleButton.setAttribute('data-theme', 'light')
   }
 
   // テーマトグルボタンのクリックイベントを処理する
@@ -22,7 +22,7 @@ function themeToggle() {
 
     // テーマを切り替える
     htmlElement.classList.toggle('dark')
-    themeToggleButton.classList.toggle('is-dark')
+    themeToggleButton.setAttribute('data-theme', newTheme)
     themeToggleButton.setAttribute('aria-checked', ariaChecked)
 
     // ローカルストレージにテーマを保存する
