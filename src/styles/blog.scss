@@ -5,7 +5,8 @@ pre {
 }
 
 code {
-  padding: 3px 6px;
+  padding: 2px 6px;
+  font-family: var(--font-inter);
   background: var(--c-background-soft);
   border-radius: var(--rounded-sm);
 }
@@ -17,6 +18,7 @@ code {
 
 p > code {
   margin-inline: 0.2em;
+  font-size: 0.875rem;
 }
 
 .expressive-code {

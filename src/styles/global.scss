@@ -11,7 +11,7 @@
   --rounded-full: 99rem;
 
   // font
-  --font-outfit: 'Outfit';
+  --font-inter: 'Inter';
   --font-notosans: 'Noto Sans JP', sans-serif;
 
   // color
@@ -69,7 +69,7 @@ body {
   grid-template-columns: 100%;
   min-height: 100vh;
   overflow: auto;
-  font-family: var(--font-outfit), var(--font-notosans);
+  font-family: var(--font-inter), var(--font-notosans);
   font-size: 16px;
   font-weight: 400;
   color: var(--c-text-2);
