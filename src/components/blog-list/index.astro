@@ -1,59 +1,98 @@
 ---
+import FormattedDate from '@/components/formatted-date/index.astro'
 import { getCollection } from 'astro:content'
-import FormattedDate from '../formatted-date/index.astro'
 import styles from './index.module.scss'
 
-const { limit } = Astro.props
+type Params = {
+  tag?: string
+}
 
-const posts = (await getCollection('blog')).sort(
-  (a: { data: { pubDate: Date } }, b: { data: { pubDate: Date } }) =>
-    b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-)
+type BlogPost = {
+  slug: string
+  data: {
+    title: string
+    pubDate: string
+    tags: string[]
+  }
+}
+
+type BlogListProps = {
+  limit?: number
+}
+
+export async function getStaticPaths() {
+  const posts = (await getCollection('blog')) as BlogPost[]
+
+  const tags = Array.from(
+    new Set(posts.flatMap((post) => post.data.tags.map((tag) => tag.toLowerCase()))),
+  )
+
+  return tags.map((tag) => ({
+    params: { tag },
+  }))
+}
+
+const { tag } = Astro.params as Params
+
+const allPosts = (await getCollection('blog')) as BlogPost[]
+
+const filteredPosts = tag
+  ? allPosts.filter((post) =>
+      post.data.tags.some((postTag) => postTag.toLowerCase() === tag.toLowerCase()),
+    )
+  : allPosts
+
+let originalTag: string | undefined
+if (tag) {
+  originalTag = allPosts
+    .find((post) =>
+      post.data.tags.some((postTag) => postTag.toLowerCase() === tag.toLowerCase()),
+    )
+    ?.data.tags.find((postTag) => postTag.toLowerCase() === tag.toLowerCase())
+}
+
+if (filteredPosts.length === 0 && tag) {
+  throw new Error(`No posts found for tag: ${tag}`)
+}
+
+const limit = (Astro.props as BlogListProps).limit
+const postsToShow = limit !== undefined ? filteredPosts.slice(0, limit) : filteredPosts
 ---
 
 <ul class={styles.list}>
   {
-    posts.slice(0, limit).map(
-      (post: {
-        slug: string
-        data: {
-          heroImage: string | null | undefined
-          title: string
-          pubDate: Date
-          tags: string
-        }
-      }) => (
-        <li class={styles.post}>
-          <a
-            href={`/blog/${post.slug}/`}
-            class={styles.postLink}
-          >
+    postsToShow.map((post) => (
+      <li class={styles.post}>
+        <a
+          href={`/blog/${post.slug}/`}
+          class={styles.postLink}
+        >
+          <div class={styles.thumbnail}>
             <img
               width={720}
               height={360}
               src={`/og/${post.slug}.png`}
               alt=""
-              class={styles.thumbnail}
               loading="eager"
               fetchpriority="high"
               transition:name={`blog-placeholder-${post.slug}`}
             />
-            <h3 class={styles.title}>{post.data.title}</h3>
-            <p class={styles.date}>
-              <FormattedDate date={post.data.pubDate} />
-            </p>
-            <ul class={styles.tagList}>
-              {Array.isArray(post.data.tags) &&
-                post.data.tags.map((tag) => (
-                  <li class={styles.tag}>
-                    <span aria-hidden="true">#</span>
-                    {tag}
-                  </li>
-                ))}
-            </ul>
-          </a>
-        </li>
-      ),
-    )
+          </div>
+          <h3 class={styles.title}>{post.data.title}</h3>
+          <p class={styles.date}>
+            <FormattedDate date={post.data.pubDate} />
+          </p>
+          <ul class={styles.tagList}>
+            {Array.isArray(post.data.tags) &&
+              post.data.tags.map((tag) => (
+                <li class={styles.tag}>
+                  <span aria-hidden="true">#</span>
+                  {tag}
+                </li>
+              ))}
+          </ul>
+        </a>
+      </li>
+    ))
   }
 </ul>

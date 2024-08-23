@@ -1,10 +1,11 @@
 .header {
+  position: sticky;
+  top: 0;
   z-index: 1;
-  padding: 20px 0 40px;
-
-  @include mq(md) {
-    padding: 48px 0 60px;
-  }
+  background: rgb(var(--c-background-header) / 80%);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--c-border);
+  box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
 }
 
 .headerInner {

@@ -5,7 +5,8 @@ pre {
 }
 
 code {
-  padding: 3px 6px;
+  padding: 2px 6px;
+  font-family: var(--font-inter);
   background: var(--c-background-soft);
   border-radius: var(--rounded-sm);
 }
@@ -17,6 +18,7 @@ code {
 
 p > code {
   margin-inline: 0.2em;
+  font-size: 0.875rem;
 }
 
 .expressive-code {
@@ -129,20 +131,20 @@ li {
 .container {
   width: min(1100px, 100%);
   padding-inline: 28px;
+  padding-top: calc(var(--header-height) / 1);
   margin-inline: auto;
 }
 
 .hero {
-  width: 100%;
-  width: min(100%, 700px);
+  width: min(100%, 640px);
   margin-inline: auto;
 }
 
 .hero img {
   display: block;
-  aspect-ratio: 4 / 2;
+  aspect-ratio: 3 / 2;
   object-fit: cover;
-  border-radius: var(--rounded-sm);
+  border-radius: var(--rounded-lg);
   box-shadow: var(--box-shadow);
 }
 
@@ -179,7 +181,7 @@ li {
     min-width: 240px;
     height: fit-content;
     max-height: calc(100vh - 50px);
-    padding-top: 20px;
+    padding-top: calc(var(--header-height) + 10px);
     margin-top: 48px;
     border-radius: var(--rounded);
   }

@@ -13,6 +13,18 @@ function navDialogHandlers() {
     const method = isOpen ? 'show' : 'close'
     dialog[method]()
     dialogOverlay?.classList.toggle('open', isOpen)
+
+    if (isOpen) {
+      document.addEventListener('click', handleOutsideClick)
+    } else {
+      document.removeEventListener('click', handleOutsideClick)
+    }
+  }
+
+  function handleOutsideClick(e) {
+    if (isOpen && !dialog.contains(e.target) && !dialogToggle.contains(e.target)) {
+      toggleDialog()
+    }
   }
 
   document.addEventListener('keydown', function (e) {
