@@ -18,9 +18,8 @@ export async function getOgImage(text: string) {
         justifyContent: 'space-between',
         height: '100%',
         width: '100%',
-        backgroundImage:
-          'linear-gradient(to right bottom, #39C9B9, #62C9BD, #84D1CC)',
-        padding: '32px 40px',
+        backgroundImage: 'linear-gradient(to right bottom, #39C9B9, #62C9BD, #84D1CC)',
+        padding: '42px 46px',
         fontFamily: `"${fontFamily}", sans-serif`,
       }}
     >
@@ -36,16 +35,18 @@ export async function getOgImage(text: string) {
           backgroundColor: 'rgba(255, 255, 255, 0.1)',
           boxShadow: '0 4px 30px rgb(0, 0, 0, 0.2)',
           backdropFilter: 'blur(8px)',
-          borderRadius: '10px',
+          borderRadius: '18px',
           border: '1px solid rgba(255, 255, 255, 0.3)',
-          padding: '32px 32px',
+          padding: '38px 38px',
         }}
       >
         <div
           style={{
+            display: 'flex',
+            alignItems: 'center',
             flexGrow: '1',
             textOverflow: 'ellipsis',
-            fontSize: '40px',
+            fontSize: '50px',
             fontWeight: 700,
             color: '#ffff',
             wordBreak: 'keep-all',
@@ -60,7 +61,7 @@ export async function getOgImage(text: string) {
             justifyContent: 'flex-end',
             width: '100%',
             color: '#ffff',
-            fontSize: '28px',
+            fontSize: '34px',
             fontWeight: 700,
           }}
         >
@@ -69,8 +70,8 @@ export async function getOgImage(text: string) {
       </div>
     </div>,
     {
-      width: 800,
-      height: 400,
+      width: 1000,
+      height: 667,
       fonts: [
         {
           name: fontFamily,
@@ -93,11 +94,7 @@ export async function getOgImage(text: string) {
   return resvg.render().asPng()
 }
 
-async function fetchFont(
-  text: string,
-  font: string,
-  weight: number,
-): Promise<ArrayBuffer> {
+async function fetchFont(text: string, font: string, weight: number): Promise<ArrayBuffer> {
   const API = `https://fonts.googleapis.com/css2?family=${font}:wght@${weight}&text=${encodeURIComponent(text)}`
 
   const css = await (

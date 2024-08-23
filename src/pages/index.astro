@@ -2,7 +2,6 @@
 import BlogList from '@/components/blog-list/index.astro'
 import Container from '@/components/container/index.astro'
 import TagList from '@/components/tag-list/index.astro'
-import { TOP_PAGE_LIMIT } from '@/consts'
 import BaseLayout from '@/layouts/base-layout/index.astro'
 ---
 
@@ -39,7 +38,7 @@ import BaseLayout from '@/layouts/base-layout/index.astro'
 
     <TagList />
 
-    <BlogList limit={TOP_PAGE_LIMIT} />
+    <BlogList limit={6} />
   </Container>
 </BaseLayout>
 

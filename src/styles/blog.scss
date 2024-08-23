@@ -136,16 +136,15 @@ li {
 }
 
 .hero {
-  width: 100%;
-  width: min(100%, 700px);
+  width: min(100%, 640px);
   margin-inline: auto;
 }
 
 .hero img {
   display: block;
-  aspect-ratio: 4 / 2;
+  aspect-ratio: 3 / 2;
   object-fit: cover;
-  border-radius: var(--rounded-sm);
+  border-radius: var(--rounded-lg);
   box-shadow: var(--box-shadow);
 }
 

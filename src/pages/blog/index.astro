@@ -2,7 +2,7 @@
 import BlogList from '@/components/blog-list/index.astro'
 import Breadcrumbs from '@/components/breadcrumbs/index.astro'
 import Container from '@/components/container/index.astro'
-import { BLOG_PAGE_LIMIT } from '@/consts'
+import TagList from '@/components/tag-list/index.astro'
 import BaseLayout from '@/layouts/base-layout/index.astro'
 ---
 
@@ -12,8 +12,10 @@ import BaseLayout from '@/layouts/base-layout/index.astro'
 >
   <Container>
     <Breadcrumbs />
+
+    <TagList />
     <section>
-      <BlogList limit={BLOG_PAGE_LIMIT} />
+      <BlogList />
     </section>
   </Container>
 </BaseLayout>
