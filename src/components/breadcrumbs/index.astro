@@ -24,7 +24,7 @@ export async function getBreadcrumbs(path: string): Promise<BreadcrumbItem[]> {
 ---
 
 <nav>
-  <ul class={styles.breadcrumbs}>
+  <ol class={styles.breadcrumbs}>
     <li class={styles.homepath}>
       <a
         href="/"
@@ -53,17 +53,12 @@ export async function getBreadcrumbs(path: string): Promise<BreadcrumbItem[]> {
       (await getBreadcrumbs(Astro.url.pathname)).map((crumb) => (
         <li class={styles.subpath}>
           {crumb.path ? (
-            <a
-              href={crumb.path}
-              aria-current={crumb.path === crumb.path ? 'location' : null}
-            >
-              {crumb.label}
-            </a>
+            <p aria-current={crumb.path === crumb.path ? 'location' : null}>{crumb.label}</p>
           ) : (
             crumb.label
           )}
         </li>
       ))
     }
-  </ul>
+  </ol>
 </nav>
