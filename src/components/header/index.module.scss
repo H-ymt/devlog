@@ -2,9 +2,12 @@
   position: sticky;
   top: 0;
   z-index: 1;
+  display: flex;
+  align-items: center;
+  height: var(--header-height);
   background: rgb(var(--c-background-header) / 80%);
   backdrop-filter: blur(6px);
-  border-bottom: 1px solid var(--c-border);
+  border-bottom: 1px solid var(--c-border-light);
   box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
 }
 
@@ -20,8 +23,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 34px;
-  height: 34px;
+  width: 2.125rem;
+  aspect-ratio: 1;
   font-size: 0.875rem;
   font-weight: 700;
   color: #151515;

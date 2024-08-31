@@ -1,19 +1,19 @@
 pre {
-  padding: 16px 20px;
-  margin-bottom: 32px !important;
+  padding: 1rem 1.25rem;
+  margin-bottom: 2rem !important;
   border-radius: var(--rounded);
 }
 
 code {
-  padding: 2px 6px;
+  padding: 0.125rem 0.375rem;
   font-family: var(--font-inter);
   background: var(--c-background-soft);
   border-radius: var(--rounded-sm);
 }
 
 .expressive-code .copy button {
-  width: 2rem !important;
-  height: 2rem !important;
+  width: 0.125rem !important;
+  height: 0.125rem !important;
 }
 
 p > code {
@@ -22,7 +22,7 @@ p > code {
 }
 
 .expressive-code {
-  margin-top: 20px;
+  margin-top: 1.25rem;
 }
 
 .rlc-info {
@@ -44,8 +44,8 @@ h1 {
 }
 
 h2 {
-  padding-bottom: 6px;
-  margin-block: 48px 0;
+  padding-bottom: 0.375rem;
+  margin-block: 3rem 0;
   font-size: 1.125rem;
   letter-spacing: 0.02em;
   border-bottom: 1px solid var(--c-border);
@@ -56,33 +56,33 @@ h2 {
 }
 
 h3 {
-  margin-block: 30px 10px;
-  font-size: 17px;
+  margin-block: 1.875rem 0.625rem;
+  font-size: 1.0625rem;
 
   @include mq(md) {
-    font-size: 20px;
+    font-size: 1.25rem;
   }
 }
 
 h4 {
-  margin-block: 20px 10px;
-  font-size: 18px;
+  margin-block: 1.25rem 0.625rem;
+  font-size: 1.125rem;
 }
 
 h5,
 h6 {
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 p {
-  margin-block: 20px 16px;
+  margin-block: 1.25rem 1rem;
   line-height: 1.8;
   letter-spacing: 0.03em;
 }
 
 p,
 ul {
-  font-size: 15px;
+  font-size: 0.9375rem;
 }
 
 img {
@@ -90,17 +90,17 @@ img {
 }
 
 .blog-content {
-  width: min(700px, 100%);
+  width: min(43.75rem, 100%);
   margin-inline: auto;
 }
 
 .blog-content > ul,
 ol {
   display: grid;
-  gap: 12px;
-  padding-top: 8px;
-  padding-left: 12px;
-  margin-left: 10px;
+  gap: 0.75rem;
+  padding-top: 0.5rem;
+  padding-left: 0.75rem;
+  margin-left: 0.625rem;
 }
 
 li {
@@ -113,8 +113,8 @@ li {
   flex-direction: column;
   justify-content: flex-start;
   width: fit-content;
-  padding: 7px;
-  margin-bottom: 40px;
+  padding: 0.4375rem;
+  margin-bottom: 2.5rem;
   border-radius: 50%;
   transition: background 0.3s ease;
 
@@ -124,19 +124,19 @@ li {
   }
 
   @include mq(md) {
-    margin-bottom: 56px;
+    margin-bottom: 3.5rem;
   }
 }
 
 .container {
-  width: min(1100px, 100%);
-  padding-inline: 28px;
+  width: min(68.75rem, 100%);
+  padding-inline: 1.75rem;
   padding-top: calc(var(--header-height) / 1);
   margin-inline: auto;
 }
 
 .hero {
-  width: min(100%, 640px);
+  width: min(100%, 40rem);
   margin-inline: auto;
 }
 
@@ -149,13 +149,13 @@ li {
 }
 
 .title {
-  padding: 40px 0 24px;
-  font-size: 20px;
+  padding: 2.5rem 0 1.5rem;
+  font-size: 1.25rem;
   line-height: 1.5;
 }
 
 .date {
-  margin-top: 16px;
+  margin-top: 1rem;
   font-size: 0.875rem;
   font-weight: 300;
   color: var(--c-text-3);
@@ -167,7 +167,7 @@ li {
 
 .grid-layout {
   display: flex;
-  gap: 24px;
+  gap: 1.5rem;
 }
 
 .table {
@@ -175,14 +175,14 @@ li {
 
   @include mq(lg) {
     position: sticky;
-    top: 24px;
+    top: 1.5rem;
     display: block;
-    width: min(240px, 100%);
-    min-width: 240px;
+    width: min(15rem, 100%);
+    min-width: 15rem;
     height: fit-content;
-    max-height: calc(100vh - 50px);
-    padding-top: calc(var(--header-height) + 10px);
-    margin-top: 48px;
+    max-height: calc(100vh - 3.125rem);
+    padding-top: calc(var(--header-height) + 0.625rem);
+    margin-top: 3rem;
     border-radius: var(--rounded);
   }
 }
@@ -206,11 +206,11 @@ li {
 }
 
 .table .h2 {
-  padding-block: 6px;
+  padding-block: 0.375rem;
 }
 
 .table .h3 {
-  padding-top: 5px;
+  padding-top: 0.3125rem;
 }
 
 .h2 a {
@@ -220,7 +220,7 @@ li {
 
 .h3 a {
   display: block;
-  padding-left: 10px;
+  padding-left: 0.625rem;
   font-size: 0.875rem;
   font-weight: 300;
 }

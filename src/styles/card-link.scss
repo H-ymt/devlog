@@ -3,8 +3,8 @@
   align-items: stretch;
   justify-content: space-between;
   width: 100%;
-  margin-block: 24px;
-  border: 1px solid var(--c-border);
+  margin-block: 1.5rem;
+  border: 0.0625rem solid var(--c-border);
   border-radius: var(--rounded);
 
   @include hover {
@@ -15,9 +15,9 @@
 .rlc-info {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 0.75rem;
   justify-content: center;
-  padding: 12px 18px;
+  padding: 0.75rem 1.125rem;
 }
 
 .rlc-info:where(.rlc-container) {
@@ -29,7 +29,7 @@
 .rlc-title {
   display: -webkit-box;
   overflow: hidden;
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 600;
   color: var(--c-text-1);
   text-overflow: ellipsis;
@@ -49,16 +49,16 @@
 
 .rlc-url-container {
   display: flex;
-  gap: 12px;
+  gap: 0.75rem;
   align-items: center;
   justify-content: flex-start;
   width: 100%;
-  font-size: 12px;
+  font-size: 0.75rem;
 }
 
 .rlc-favicon {
-  width: 14px;
-  height: 14px;
+  width: 0.875rem;
+  height: 0.875rem;
 }
 
 .rlc-url {
@@ -71,11 +71,11 @@
 }
 
 .rlc-image-container {
-  width: max(220px, 100%);
+  width: max(13.75rem, 100%);
 }
 
 .rlc-image-container img {
-  width: 120px;
+  width: 7.5rem;
   height: 100%;
   object-fit: cover;
   border-top-right-radius: var(--rounded);
