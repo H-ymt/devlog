@@ -12,7 +12,6 @@ const tagCount = frontmatter.reduce((acc, { tags }) => {
 ---
 
 <div class={styles.wrapper}>
-  <p class={styles.title}>タグから探す</p>
   <ul class={styles.list}>
     {
       Object.entries(tagCount).map(([tag, count]) => (

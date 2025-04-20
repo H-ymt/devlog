@@ -3,7 +3,6 @@ import Container from '../container/index.astro'
 import ExtraNavigation from '../extra-navigation/index.astro'
 import HeaderLink from '../header-link/index.astro'
 import MenuMobile from '../menu-mobile/index.astro'
-import Search from '../search/index.astro'
 import styles from './index.module.scss'
 ---
 
@@ -21,14 +20,17 @@ import styles from './index.module.scss'
     >
       <div class={styles.links}>
         <div class={styles.internalLinks}>
-          <HeaderLink href="/">HOME</HeaderLink>
-          <HeaderLink href="/blog/">BLOG</HeaderLink>
-          <HeaderLink href="/note/">NOTE</HeaderLink>
+          <HeaderLink href="/">Home</HeaderLink>
+          <HeaderLink href="/blog/">Log</HeaderLink>
+          <HeaderLink
+            href="https://devymt.com/"
+            target="_blank"
+            >About me</HeaderLink
+          >
         </div>
         <ExtraNavigation />
       </div>
     </nav>
     <MenuMobile />
-    <Search />
   </Container>
 </header>

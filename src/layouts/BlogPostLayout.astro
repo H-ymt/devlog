@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets'
 import type { CollectionEntry } from 'astro:content'
 import BaseHead from '../components/base-head/index.astro'
-import Container from '@/components/container/index.astro'
+import Container from '../components/container/index.astro'
 import Footer from '../components/footer/index.astro'
 import FormattedDate from '../components/formatted-date/index.astro'
 import Header from '../components/header/index.astro'
@@ -40,7 +40,6 @@ const { title, description, pubDate, updatedDate } = Astro.props
             height="18"
             viewBox="0 0 24 24"
             fill="none"
-            xmlns="http://www.w3.org/2000/svg"
             aria-hidden="true"
             ><path
               d="M21 12H3M3 12L10 5M3 12L10 19"

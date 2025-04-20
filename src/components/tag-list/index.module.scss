@@ -2,13 +2,8 @@
   display: grid;
   row-gap: 1rem;
   place-items: center;
+  justify-items: start;
   padding: 1rem 0.5rem 2rem;
-}
-
-.title {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--c-text-1);
 }
 
 .icon {
@@ -25,12 +20,13 @@
 }
 
 .link {
-  font-weight: 300;
+  font-weight: 400;
   color: inherit;
-  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--c-text-3), var(--c-background) 40%);
   text-decoration-skip-ink: none;
-}
 
-.link:hover {
-  color: var(--c-text-1);
+  @include hover {
+    text-decoration: underline;
+    text-decoration-color: var(--c-text-1);
+  }
 }

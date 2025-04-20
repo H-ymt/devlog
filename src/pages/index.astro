@@ -1,41 +1,12 @@
 ---
-import BlogList from '@/components/blog-list/index.astro'
-import Container from '@/components/container/index.astro'
-import TagList from '@/components/tag-list/index.astro'
-import BaseLayout from '@/layouts/base-layout/index.astro'
+import BlogList from '../../src/components/blog-list/index.astro'
+import Container from '../../src/components/container/index.astro'
+import TagList from '../../src/components/tag-list/index.astro'
+import BaseLayout from '../../src/layouts/base-layout/index.astro'
 ---
 
 <BaseLayout description="My web developing log">
   <Container>
-    <div class="space-container">
-      <div class="space-list">
-        <a
-          class="space-link"
-          href="/blog"
-          >Blog</a
-        >
-        <p>Webの技術記事を書き溜めるスペース</p>
-      </div>
-
-      <div class="space-list">
-        <a
-          class="space-link"
-          href="/note"
-          >Note</a
-        >
-        <p>役立つ知識を記録するスペース</p>
-      </div>
-
-      <div class="space-list">
-        <a
-          class="space-link"
-          href="/contact"
-          >Contact</a
-        >
-        <p>お問い合わせはこちらから</p>
-      </div>
-    </div>
-
     <TagList />
 
     <BlogList limit={6} />
@@ -77,7 +48,7 @@ import BaseLayout from '@/layouts/base-layout/index.astro'
   }
 
   .space-list p {
-    font-size: 0.75rem;
+    font-size: 0.875rem;
     color: var(--c-text-2);
   }
 </style>

@@ -1,7 +1,7 @@
 :root {
   // layout
-  --container-width: 56.25rem;
-  --header-height: 4rem;
+  --container-width: 64rem;
+  --header-height: 5rem;
 
   // border radius
   --rounded-sm: 0.25rem;
@@ -11,8 +11,8 @@
   --rounded-full: 99rem;
 
   // font
-  --font-inter: 'Inter';
-  --font-notosans: 'Noto Sans JP', sans-serif;
+  --font-montserrat: 'Montserrat';
+  --font-mplus: 'M PLUS Rounded 1c';
 
   // color
   --c-background: #fff;
@@ -27,8 +27,8 @@
   --c-primary-lightest: #7eb5da;
   --c-primary-dark: #1e40af;
   --c-primary-darker: #1e3a8a;
-  --c-border: #c9d2d9;
-  --c-border-light: #eff3f4;
+  --c-border: #b3bbc2;
+  --c-border-light: #e1e6e8;
   --c-input: #e2e0e0;
   --c-shadow: 0 12px 24px rgb(0 0 0 / 10%), 0 2px 6px rgb(0 0 0 / 8%);
 }
@@ -41,7 +41,7 @@
   --c-text-1: #e7e9ea;
   --c-text-2: #cecece;
   --c-text-3: #ebebf599;
-  --c-primary: #1d9bf0;
+  --c-primary: #b3c7ff;
   --c-primary-light: #2898e3;
   --c-primary-lighter: #3ca2e6;
   --c-primary-lightest: #7eb5da;
@@ -69,9 +69,9 @@ body {
   grid-template-columns: 100%;
   min-height: 100vh;
   overflow: auto;
-  font-family: var(--font-inter), var(--font-notosans);
+  font-family: var(--font-montserrat), var(--font-mplus), sans-serif;
   font-size: 1rem;
-  font-weight: 400;
+  font-weight: 500;
   color: var(--c-text-2);
   word-wrap: break-word;
   overflow-wrap: break-word;
@@ -85,15 +85,18 @@ body {
 
 a {
   color: var(--c-primary);
-  text-decoration: none;
+  text-decoration-thickness: 0.0625rem;
+  text-decoration-color: color-mix(in srgb, var(--c-primary), var(--c-background) 40%);
+  text-underline-offset: 0.125rem;
   transition:
     color 0.25s,
-    opacity 0.25s;
+    opacity 0.25s,
+    text-decoration-color 0.25s;
 
   @include hover {
-    color: var(--c-primary-light);
     text-decoration: underline;
     text-decoration-thickness: 1px;
+    text-decoration-color: var(--c-primary);
     opacity: 1;
   }
 }

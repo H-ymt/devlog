@@ -18,7 +18,7 @@ export async function getOgImage(text: string) {
         justifyContent: 'space-between',
         height: '100%',
         width: '100%',
-        backgroundImage: 'linear-gradient(to right bottom, #39C9B9, #62C9BD, #84D1CC)',
+        backgroundImage: 'linear-gradient(to right bottom, #000, #121212)',
         padding: '42px 46px',
         fontFamily: `"${fontFamily}", sans-serif`,
       }}
@@ -32,11 +32,6 @@ export async function getOgImage(text: string) {
           rowGap: '24px',
           height: '100%',
           width: '100%',
-          backgroundColor: 'rgba(255, 255, 255, 0.1)',
-          boxShadow: '0 4px 30px rgb(0, 0, 0, 0.2)',
-          backdropFilter: 'blur(8px)',
-          borderRadius: '18px',
-          border: '1px solid rgba(255, 255, 255, 0.3)',
           padding: '38px 38px',
         }}
       >
@@ -53,19 +48,6 @@ export async function getOgImage(text: string) {
           }}
         >
           {text}
-        </div>
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'flex-end',
-            width: '100%',
-            color: '#ffff',
-            fontSize: '34px',
-            fontWeight: 700,
-          }}
-        >
-          <span>{SITE_TITLE}</span>
         </div>
       </div>
     </div>,

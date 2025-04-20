@@ -21,7 +21,7 @@
 
 .buttonBar {
   width: 100%;
-  height: 2px;
+  height: 0.125rem;
   background: var(--c-text-1);
   border-radius: var(--rounded);
   transition: opacity 0.25s;
@@ -96,7 +96,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  width: min(100%, 300px);
+  width: min(100%, 41.25rem);
   margin-inline: auto;
 }
 
